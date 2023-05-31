@@ -44,8 +44,8 @@ CREATE TABLE Question (
 CREATE TABLE Answer (
   AnswerID INT PRIMARY KEY,
   Text VARCHAR(255),
-  IsCorrectAnswer Bit,
   QuestionID INT,
+  IsCorrectAnswer Bit,
   FOREIGN KEY (QuestionID) REFERENCES Question(QuestionID)
 );
 
@@ -57,4 +57,14 @@ CREATE TABLE Result (
   Score FLOAT,
   FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
   FOREIGN KEY (TestID) REFERENCES Test(TestID)
+);
+
+CREATE TABLE TestSession (
+	TestSessionID INT PRIMARY KEY,
+	Code VARCHAR(10),
+	TestID INT,
+	FOREIGN KEY (TestID) REFERENCES Test(TestID),
+	StartData DATETIME,
+	EndDate DATETIME,
+	IsInProgree Bit
 );
