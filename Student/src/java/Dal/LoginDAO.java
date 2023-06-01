@@ -21,7 +21,7 @@ public class LoginDAO {
     
     public Student checkLogin(String mail, String pass) {
         try {
-            String query = "Select * from Student where Email = ? and Password = ?";
+            String query = "Select Email, Password from Student where Email = ? and Password = ?";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, mail);
@@ -29,7 +29,7 @@ public class LoginDAO {
             rs = ps.executeQuery();
             
             while(rs.next()){
-                Student stu = new Student(rs.getString(1), rs.getString(2));
+                Student stu = new Student();
                 return stu;
             }
         } catch(Exception e) {
