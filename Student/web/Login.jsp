@@ -58,9 +58,7 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
+                                                <input class="login100-form-btn" type="submit" value="Login" />
 					</div>
 
 					<div class="text-center p-t-12">
@@ -73,7 +71,7 @@
 					</div>
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
+						<a class="txt2" href="SignUp.jsp">
 							Create your Account
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
