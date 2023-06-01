@@ -20,7 +20,7 @@
         <div class="form_wrapper">
             <div class="form_container">
                 <div class="title_container">
-                    <h2>Responsive Registration Form</h2>
+                    <h2>Registration Form</h2>
                 </div>
                 <div class="row clearfix">
                     <div class="">
@@ -37,29 +37,26 @@
                             <div class="row clearfix">
                                 <div class="col_half">
                                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                        <input type="text" name="name" placeholder="First Name" />
-                                    </div>
-                                </div>
-                                <div class="col_half">
-                                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                        <input type="text" name="name" placeholder="Last Name" required />
+                                        <input type="text" name="name" placeholder="Name" />
                                     </div>
                                 </div>
                             </div>
                             <div class="input_field radio_option">
+                                <h2>Gender?</h2>
                                 <input type="radio" name="radiogroup1" id="rd1">
                                 <label for="rd1">Male</label>
                                 <input type="radio" name="radiogroup1" id="rd2">
                                 <label for="rd2">Female</label>
                             </div>
-                            <div class="input_field select_option">
-                                <select>
-                                    <option>Select a country</option>
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                </select>
-                                <div class="select_arrow"></div>
+
+                            <div class="input_field radio_option">
+                                <h2>Are your a Student or a Teacher?</h2>
+                                <input type="radio" name="radiogroup1" id="rd1">
+                                <label for="rd1">Student</label>
+                                <input type="radio" name="radiogroup1" id="rd2">
+                                <label for="rd2">Teacher</label>
                             </div>
+                        
                             <input class="login100-form-btn" type="submit" value="Register" />
                         </form>
                     </div>
