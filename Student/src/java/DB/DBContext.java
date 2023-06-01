@@ -23,13 +23,6 @@ public class DBContext {
         private final String portNumber = "1433";
         private final String userID = "long2003";
         private final String password = "long2003";
-        
-        public static void main(String[] args) {
-            try{
-                System.out.print(new DBContext().getConnection());
-            } catch(Exception e){
-                
-            }
-    }
+
 }
 
