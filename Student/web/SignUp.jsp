@@ -11,6 +11,8 @@
             <!--===============================================================================================-->
             <link rel="stylesheet" type="text/css" href="css/util.css">
             <link rel="stylesheet" type="text/css" href="css/SignUp.css">
+            <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
             <!--===============================================================================================-->
         </head>
 
