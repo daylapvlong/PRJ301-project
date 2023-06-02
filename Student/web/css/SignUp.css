@@ -342,8 +342,7 @@ figure {
 }
 
 input {
-  width: 100%;
-  display: block;
+
   border: none;
   border-bottom: 1px solid #999;
   padding: 6px 30px;
@@ -422,14 +421,6 @@ input[type=checkbox]:not(old):checked + label > span:before {
   width: auto; }
 
 label {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   color: #222; }
 
 .label-has-error {
@@ -499,6 +490,17 @@ label.valid {
 
 .form-control:focus + .focus-input100 + .material-icons-name {
   padding-left: 12px;
+}
+
+.radio_option{
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+.radio_label{
+  bottom: 2px;
+  font-size: 14px;
+  margin-right: 14px;
 }
   
 

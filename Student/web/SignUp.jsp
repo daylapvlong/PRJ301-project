@@ -49,7 +49,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input class="form-control type="password" name="re_pass" id="re_pass"
+                                    <input class="form-control" type="password" name="re_pass" id="re_pass"
                                         placeholder="Repeat your password" />
                                     <span class="focus-input100"></span>
                                     <span class=" material-icons-name">
@@ -57,19 +57,18 @@
                                     </span>
                                 </div>
 
-                                 <div class="input_field">
+                                 <div class="radio_option">
                                     <p>Are your a Student or a Teacher?</p>
-                                    <div class=" radio_option">
-                                        <input type="radio" name="radiogroup1" id="rd1">
-                                        <label for="rd1">Student</label>
-                                    </div>
                                     <div class="radio_option">
+                                        <input type="radio" name="radiogroup1" id="rd1">
+                                        <label class="radio_label" for="rd1">Student</label>
+                                
                                         <input type="radio" name="radiogroup1" id="rd2">
-                                        <label for="rd2">Teacher</label>
+                                        <label class="radio_label" for="rd2">Teacher</label>
                                     </div>
                                 </div> 
 
-                                <div class="form-group">
+                                <div class="">
                                     <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                     <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree
                                         all statements in <a href="#" class="term-service">Terms of service</a></label>
