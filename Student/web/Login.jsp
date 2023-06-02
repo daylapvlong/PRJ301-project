@@ -58,7 +58,7 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-                                                <input class="login100-form-btn" type="submit" value="Login" />
+                        <input class="login100-form-btn" type="submit" value="Login" />
 					</div>
 
 					<div class="text-center p-t-12">

@@ -21,36 +21,52 @@
                 <div class="container">
                     <div class="signup-content">
                         <div class="signup-form">
-                            <h2 class="form-title">Sign up</h2>
+                            <h2 class="form-title">New to Quizzle?</h2>
                             <form method="POST" class="register-form" id="register-form">
 
                                 <div class="form-group">
-                                    <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                    <input type="text" name="name" id="name" placeholder="Your Name" />
+                                    <input class="form-control" type="text" name="name" id="name" placeholder="Your Name" />
+                                    <span class="focus-input100"></span>
+                                    <span class=" material-icons-name">
+                                        <i class="zmdi zmdi-account"></i>
+                                    </span>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                    <input type="email" name="email" id="email" placeholder="Your Email" />
+                                    <input class="form-control" type="text" name="email" id=""name="email" id="email" placeholder="Your Email" />
+                                    <span class="focus-input100"></span>
+                                    <span class=" material-icons-name">
+                                        <i class="zmdi zmdi-email"></i>
+                                    </span>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                    <input type="password" name="pass" id="pass" placeholder="Password" />
+                                    <input class="form-control" type="text" name="password" name="pass" id="pass" placeholder="Password" />
+                                    <span class="focus-input100"></span>
+                                    <span class=" material-icons-name">
+                                        <i class="zmdi zmdi-lock"></i>
+                                    </span>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                    <input type="password" name="re_pass" id="re_pass"
+                                    <input class="form-control type="password" name="re_pass" id="re_pass"
                                         placeholder="Repeat your password" />
+                                    <span class="focus-input100"></span>
+                                    <span class=" material-icons-name">
+                                        <i class="zmdi zmdi-lock-outline"></i>
+                                    </span>
                                 </div>
 
-                                 <div class="input_field radio_option">
+                                 <div class="input_field">
                                     <p>Are your a Student or a Teacher?</p>
-                                    <input type="radio" name="radiogroup1" id="rd1">
-                                    <label for="rd1">Student</label>
-                                    <input type="radio" name="radiogroup1" id="rd2">
-                                    <label for="rd2">Teacher</label>
+                                    <div class=" radio_option">
+                                        <input type="radio" name="radiogroup1" id="rd1">
+                                        <label for="rd1">Student</label>
+                                    </div>
+                                    <div class="radio_option">
+                                        <input type="radio" name="radiogroup1" id="rd2">
+                                        <label for="rd2">Teacher</label>
+                                    </div>
                                 </div> 
 
                                 <div class="form-group">
