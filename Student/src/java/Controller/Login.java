@@ -4,6 +4,8 @@
  */
 package Controller;
 
+import Dal.LoginDAO;
+import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -34,6 +36,15 @@ public class Login extends HttpServlet {
                 String mail = request.getParameter("email");
                 String pass = request.getParameter("password");
                 
+                LoginDAO login= new LoginDAO();
+                Account a = login.checkLogin(mail,pass);
+                if(a==null){
+                    request.setAttribute("clsButton", "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span>");
+                    request.setAttribute("mess", "<strong>Wrong user login!</strong> Please try again.");
+                    request.getRequestDispatcher("Login.jsp").forward(request,response);
+                } else {
+                    request.getRequestDispatcher("Index.html").forward(request,response);
+                }
             } catch(Exception e){
                 
             }

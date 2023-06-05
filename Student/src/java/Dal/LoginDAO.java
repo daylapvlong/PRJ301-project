@@ -5,7 +5,7 @@
 package Dal;
 
 import DB.DBContext;
-import Model.Student;
+import Model.Account;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +19,7 @@ public class LoginDAO extends DBContext {
     PreparedStatement ps = null;
     ResultSet rs = null;
     
-    public Student checkLogin(String mail, String pass) {
+    public Account checkLogin(String mail, String pass) {
         try {
             String query = "Select Email, Password from Student where Email = ? and Password = ?";
             conn = new DBContext().getConnection();
@@ -29,10 +29,12 @@ public class LoginDAO extends DBContext {
             rs = ps.executeQuery();
             
             while(rs.next()){
-                return new Student(rs.getInt(1),
+                return new Account(rs.getInt(1),
                                 rs.getString(2),
                                 rs.getString(3),
-                                rs.getString(4));
+                                rs.getString(4),
+                                rs.getInt(5),
+                                rs.getInt(6));
             }
         } catch(Exception e) {
             
