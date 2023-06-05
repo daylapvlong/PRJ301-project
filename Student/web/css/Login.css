@@ -154,7 +154,7 @@ iframe {
 
 .container-login100 {
   width: 100%;  
-  min-height: 100vh;
+  height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -172,7 +172,7 @@ iframe {
 }
 
 .wrap-login100 {
-  width: 960px;
+  width: 1000px;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
@@ -319,7 +319,7 @@ iframe {
 /*------------------------------------------------------------------
 [ Login alert ]*/
 .alert {
-  padding: 20px;
+  padding: 14px;
   background-color: #f44336; /* Red */
   color: white;
   margin-bottom: 15px;

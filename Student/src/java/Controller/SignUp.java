@@ -41,8 +41,10 @@ public class SignUp extends HttpServlet {
             
             if(!pass.equals(re_pass)){
                 //check pass va repass cp trung nhau k?
-                request.setAttribute("clsButtonPass", "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span>");
-                request.setAttribute("passmess", "<strong>Password dont match!</strong> Please try again.");
+                request.setAttribute("passmess", "<div class=\"alert\">\n" +
+"                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n" +
+"                                                           <strong>Password dont match!</strong> Please try again.\n" +
+"                                                       </div>");
                 request.getRequestDispatcher("SignUp.jsp").forward(request,response);
             } else {
                 SignUpDAO signup = new SignUpDAO();
@@ -53,8 +55,11 @@ public class SignUp extends HttpServlet {
                     response.sendRedirect("index.html");
                 } else {
                     //quay lai signup
-                    request.setAttribute("clsButtonName", "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span>");
-                request.setAttribute("namemess", "<strong>Email existed!</strong> Please try again.");
+                    request.setAttribute("namemess", "<div class=\"alert\">\n" +
+"                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n" +
+"                                                           <strong>Email existed!</strong> Please try again.\n" +
+"                                                       </div>");
+                     request.getRequestDispatcher("SignUp.jsp").forward(request,response);
                 }
             }
         }

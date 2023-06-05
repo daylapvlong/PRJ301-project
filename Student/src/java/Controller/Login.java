@@ -39,8 +39,10 @@ public class Login extends HttpServlet {
                 LoginDAO login= new LoginDAO();
                 Account a = login.checkLogin(mail,pass);
                 if(a==null){
-                    request.setAttribute("clsButton", "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span>");
-                    request.setAttribute("mess", "<strong>Wrong user login!</strong> Please try again.");
+                    request.setAttribute("loginMess", "<div class=\"alert\">\n" +
+"                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n" +
+"                                                           <strong>Wrong user login!</strong> Please try again.\n" +
+"                                                       </div>");
                     request.getRequestDispatcher("Login.jsp").forward(request,response);
                 } else {
                     request.getRequestDispatcher("Index.html").forward(request,response);

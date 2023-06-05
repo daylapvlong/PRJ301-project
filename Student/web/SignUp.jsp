@@ -22,15 +22,15 @@
                     <div class="signup-content">
                         <div class="signup-form">
                             <h2 class="form-title">New to Quizzle?</h2>
-                            <div class="alert">
-                                ${clsButtonPass}
+                            
+                            <div>
                                 ${passmess}
                             </div>
                             
-                            <div class="alert">
-                                ${clsButtonNane}
+                            <div>
                                 ${namemess}
                             </div>
+                            
                             <form method="post" action="signup" class="register-form" id="register-form">
 
                                 <div class="form-group">

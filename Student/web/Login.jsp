@@ -40,10 +40,9 @@
                         <span class="login100-form-title">
                             Member Login
                         </span>
-
-                        <div class="alert">
-                            ${clsButton}
-                            ${mess}
+                        
+                        <div>
+                            ${loginMess}
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
