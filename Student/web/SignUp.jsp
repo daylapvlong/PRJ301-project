@@ -22,7 +22,16 @@
                     <div class="signup-content">
                         <div class="signup-form">
                             <h2 class="form-title">New to Quizzle?</h2>
-                            <form method="POST" class="register-form" id="register-form">
+                            <div class="alert">
+                                ${clsButtonPass}
+                                ${passmess}
+                            </div>
+                            
+                            <div class="alert">
+                                ${clsButtonNane}
+                                ${namemess}
+                            </div>
+                            <form method="post" action="signup" class="register-form" id="register-form">
 
                                 <div class="form-group">
                                     <input class="form-control" type="text" name="name" id="name" placeholder="Your Name" />
@@ -30,7 +39,7 @@
                                     <span class=" material-icons-name">
                                         <i class="zmdi zmdi-account"></i>
                                     </span>
-                                </div>
+                                </div>                              
 
                                 <div class="form-group">
                                     <input class="form-control" type="text" name="email" id=""name="email" id="email" placeholder="Your Email" />
@@ -41,7 +50,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input class="form-control" type="text" name="password" name="pass" id="pass" placeholder="Password" />
+                                    <input class="form-control" type="password" name="password" name="pass" id="pass" placeholder="Password" />
                                     <span class="focus-input100"></span>
                                     <span class=" material-icons-name">
                                         <i class="zmdi zmdi-lock"></i>
