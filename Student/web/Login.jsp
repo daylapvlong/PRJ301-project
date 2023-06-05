@@ -36,7 +36,7 @@
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="login" method="post">
 					<span class="login100-form-title">
 						Member Login
 					</span>
@@ -58,7 +58,7 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-                        <input class="login100-form-btn" type="submit" value="Login" />
+                                            <input class="login100-form-btn" type="submit" value="login" />
 					</div>
 
 					<div class="text-center p-t-12">

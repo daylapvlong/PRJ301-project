@@ -14,7 +14,7 @@ import java.sql.ResultSet;
  *
  * @author admin's
  */
-public class LoginDAO {
+public class LoginDAO extends DBContext {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -29,8 +29,10 @@ public class LoginDAO {
             rs = ps.executeQuery();
             
             while(rs.next()){
-                Student stu = new Student();
-                return stu;
+                return new Student(rs.getInt(1),
+                                rs.getString(2),
+                                rs.getString(3),
+                                rs.getString(4));
             }
         } catch(Exception e) {
             
