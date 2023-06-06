@@ -30,12 +30,13 @@
             </nav>
 
             <div class="body_container">
-                <div class="enter_code_container">
-                    <h2>Enter code</h2>
-                    <input class="enter_code_input" type="text" placeholder="Enter code">
-                    <button class="enter_code_button">Enter</button>
+                <div class="enter_code_container col-sm-7">
+                    <form class="enter_code_form" action="">
+                        <input class="enter_code_input" type="text" placeholder="Enter code">
+                        <button class="enter_code_button">Enter</button>   
+                    </form>
                 </div>
-                <div class="profile_container">
+                <div class="profile_container col-sm-4">
                     <div class="profile_box">
                         <div class="profile_span">
                             <h2>Name of user</h2>
