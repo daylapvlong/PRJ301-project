@@ -21,7 +21,7 @@ public class SignUpDAO extends DBContext {
     
     public Account checkAccountExist(String mail) {
         try {
-            String query = "Select Email from Student where Email = ?";
+            String query = "Select email from Account where email = ?";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, mail);
@@ -51,7 +51,7 @@ public class SignUpDAO extends DBContext {
             ps.setString(3, pass);
             ps.executeUpdate();
         } catch(Exception e) {
-            
+            System.out.println(e);
         }
     }
 }

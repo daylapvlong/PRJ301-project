@@ -21,7 +21,7 @@ public class LoginDAO extends DBContext {
     
     public Account checkLogin(String mail, String pass) {
         try {
-            String query = "Select Email, Password from Student where Email = ? and Password = ?";
+            String query = "Select * from Account where email = ? and password = ?";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, mail);
@@ -29,6 +29,8 @@ public class LoginDAO extends DBContext {
             rs = ps.executeQuery();
             
             while(rs.next()){
+//                System.out.println(rs.getInt(1));
+//                return null;
                 return new Account(rs.getInt(1),
                                 rs.getString(2),
                                 rs.getString(3),
@@ -40,5 +42,9 @@ public class LoginDAO extends DBContext {
             
         }
         return null;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(new LoginDAO().checkLogin("johndoe@example.com", "password123"));
     }
 }
