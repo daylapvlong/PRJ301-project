@@ -39,7 +39,7 @@ public class LoginDAO extends DBContext {
                                 rs.getInt(6));
             }
         } catch(Exception e) {
-            
+            System.out.println(e);
         }
         return null;
     }
