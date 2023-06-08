@@ -1,5 +1,5 @@
 Create table Account (
-	Id int primary key,
+	Id int primary key IDENTITY(1,1),
 	name varchar(255),
 	email varchar(255),
 	password varchar(255),
@@ -22,6 +22,10 @@ Create table Course (
 	FOREIGN KEY (categoryId) REFERENCES Category(categoryId)
 )
 
+INSERT INTO Account (name, email, password, isStudent, isTeacher)
+VALUES ('John Doe', 'johndoe@example.com', 'password123', 1, 0),
+       ('Jane Doe', 'janedoe@example.com', 'password456', 1, 0),
+       ('Bob Smith', 'bobsmith@example.com', 'password789', 0, 1);
 
 INSERT INTO Course (courseId, courseName, description, Id, categoryId)
 VALUES (1, 'MAE101', 'Introduction to calculus', 1, 1),
@@ -47,3 +51,7 @@ VALUES (1, 'Semester 1'),
        (2, 'Semester 2'),
        (3, 'Semester 3'),
 	   (4, 'Semester 4');
+
+Drop table Account
+Drop table Category
+Drop table Course

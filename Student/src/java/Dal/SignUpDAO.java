@@ -21,7 +21,7 @@ public class SignUpDAO extends DBContext {
     
     public Account checkAccountExist(String mail) {
         try {
-            String query = "Select email from Account where email = ?";
+            String query = "Select * from Account where email = ?";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, mail);
@@ -42,7 +42,7 @@ public class SignUpDAO extends DBContext {
     }
     
     public void signup(String name, String mail, String pass){
-        String query= "insert into Account values(?,?,?,0,0)";
+        String query= "insert into Account(name, email, password, isStudent, isTeacher) values(?,?,?,0,0)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
