@@ -22,13 +22,11 @@ Create table Course (
 	FOREIGN KEY (categoryId) REFERENCES Category(categoryId)
 )
 
-insert into Account( name, email, password, isStudent, isTeacher) 
-values  ('long','example@gmail.com','asdfg',0,0),
-		('John Doe', 'johndoe@example.com', 'password123',1,0),
-		('Jane Smith', 'janesmith@example.com','securepass',0,1),
-		('Alice Johnson', 'alicejohnson@example.com', 'qwerty',1,0);
+INSERT INTO Account (name, email, password, isStudent, isTeacher)
+VALUES ('John Doe', 'johndoe@example.com', 'password123', 1, 0),
+       ('Jane Doe', 'janedoe@example.com', 'password456', 1, 0),
+       ('Bob Smith', 'bobsmith@example.com', 'password789', 0, 1);
 
-select * from Account
 
 INSERT INTO Course (courseId, courseName, description, Id, categoryId)
 VALUES (1, 'MAE101', 'Introduction to calculus', 1, 1),
@@ -56,8 +54,16 @@ VALUES (1, 'Semester 1'),
 	   (4, 'Semester 4');
 
 
-select * from Course
+select * from Account
 
 select * from Category
+where categoryId = '1'
 
-select * from Account
+select * from Course
+
+Drop table Account
+
+Drop table Category
+
+Drop table Course
+
