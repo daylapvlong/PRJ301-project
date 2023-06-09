@@ -52,6 +52,14 @@ VALUES (1, 'Semester 1'),
        (3, 'Semester 3'),
 	   (4, 'Semester 4');
 
+select * from Account
+
+select * from Category
+
+select * from Course
+
 Drop table Account
+
 Drop table Category
+
 Drop table Course

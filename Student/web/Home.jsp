@@ -1,5 +1,5 @@
 <%-- Document : home Created on : Jun 6, 2023, 8:11:16 AM Author : admin's --%>
-
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
         <!DOCTYPE html>
@@ -56,50 +56,23 @@
                     <div class="dropdown">
                         <button onclick="myFunction()" class="dropbtn">Dropdown</button>
                         <div id="myDropdown" class="dropdown-content">
-                          <a href="#home">Semester 1</a>
-                          <a href="#about">Semester 2</a>
-                          <a href="#contact">Semester 3</a>
-                          <a href="#contact">Semester 4</a>
+                            <c:forEach items="${listCategory}" var="o">
+                                <a href="#home">${o.categoryName}</a>
+                            </c:forEach>
                         </div>
                     </div>
 
                     <div class="content_container">
-                            <!-- <c:forEach items="${listCourse}" var="o"> -->
-                                <div class="content_wrapper">
-                                    <!-- <h2>${o.courseName}</h2>
-                                    <p>${o.description}</p> -->
-                                    <h2>PRF192</h2>
-                                    <p>Programming Fundamental</p>
-                                    <a class="content_button" href="#">View course now</a>
-                                </div>
-
-                                <div class="content_wrapper">
-                                    <!-- <h2>${o.courseName}</h2>
-                                    <p>${o.description}</p> -->
-                                    <h2>PRF192</h2>
-                                    <p>Programming Fundamental</p>
-                                    <a class="content_button" href="#">View course now</a>
-                                </div>
-
-                                <div class="content_wrapper">
-                                    <!-- <h2>${o.courseName}</h2>
-                                    <p>${o.description}</p> -->
-                                    <h2>PRF192</h2>
-                                    <p>Programming Fundamental</p>
-                                    <a class="content_button" href="#">View course now</a>
-                                </div>
-
-                                <div class="content_wrapper">
-                                    <!-- <h2>${o.courseName}</h2>
-                                    <p>${o.description}</p> -->
-                                    <h2>PRF192</h2>
-                                    <p>Programming Fundamental</p>
-                                    <a class="content_button" href="#">View course now</a>
-                                </div>
-                             <!--  </c:forEach> -->
-                        </div>
+                        <c:forEach items="${listCourse}" var="o">
+                            <div class="content_wrapper">
+                                <h2>${o.courseName}</h2>
+                                <p>${o.description}</p>
+                                <a class="content_button" href="#">View course now</a>
+                            </div> 
+                        </c:forEach>
                     </div>
                 </div>
+            </div>
             </div>
 
             <div>
