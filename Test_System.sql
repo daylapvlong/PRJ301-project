@@ -27,6 +27,7 @@ VALUES ('John Doe', 'johndoe@example.com', 'password123', 1, 0),
        ('Jane Doe', 'janedoe@example.com', 'password456', 1, 0),
        ('Bob Smith', 'bobsmith@example.com', 'password789', 0, 1);
 
+
 INSERT INTO Course (courseId, courseName, description, Id, categoryId)
 VALUES (1, 'MAE101', 'Introduction to calculus', 1, 1),
        (2, 'CSI104', 'Introduction to Computer Science', 2, 1),
@@ -52,6 +53,7 @@ VALUES (1, 'Semester 1'),
        (3, 'Semester 3'),
 	   (4, 'Semester 4');
 
+
 select * from Account
 
 select * from Category
@@ -64,3 +66,4 @@ Drop table Account
 Drop table Category
 
 Drop table Course
+
