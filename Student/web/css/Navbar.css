@@ -5,8 +5,8 @@
   background: -o-linear-gradient(135deg, #9df0ff, #4158d0);
   background: -moz-linear-gradient(135deg, #9df0ff, #4158d0);
   background: linear-gradient(135deg, #9df0ff, #4158d0);
-  padding: 20px 15px 20px 15px;
-  height: 120%;
+  padding: 0.5rem 1rem;
+  height: 110%;
   overflow: hidden;
 }
 
@@ -16,6 +16,7 @@
   padding: 14px 16px;
   text-decoration: none;
   font-size: 18px;
+  margin-left: 5px;
 }
 
 /* Style the links inside the navigation bar */
@@ -28,6 +29,9 @@
 
 .navbar_right {
   float: right;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 /* Change the color of links on hover */
