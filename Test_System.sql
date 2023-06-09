@@ -55,6 +55,7 @@ VALUES (1, 'Semester 1'),
 select * from Account
 
 select * from Category
+where categoryId = '1'
 
 select * from Course
 
