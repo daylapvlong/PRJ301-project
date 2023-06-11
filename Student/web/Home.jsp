@@ -64,7 +64,7 @@
                                 <div class="content_wrapper">
                                     <h2>${o.courseName}</h2>
                                     <p>${o.description}</p>
-                                    <a class="content_button" href="#">View course now</a>
+                                    <a class="content_button" href="Course?courseid=${o.courseId}">View course now</a>
                                 </div>
                             </c:forEach>
                         </div>

@@ -60,6 +60,7 @@ select * from Category
 where categoryId = '1'
 
 select * from Course
+where courseId = '1'
 
 Drop table Account
 

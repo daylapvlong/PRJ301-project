@@ -40,7 +40,7 @@ public class HomeDAO extends DBContext{
         return list;
     }
     
-        public List<Course> getCourseByCategory(String cid){
+    public List<Course> getCourseByCategory(String cid){
         List<Course> list = new ArrayList<>();
         String query = "select * from Course\n" +
                         "where categoryId = ?";
@@ -58,6 +58,25 @@ public class HomeDAO extends DBContext{
             System.out.println(e);
         }
         return list;
+    }
+    
+    public Course getCourseById(String courseId){
+        String query = "select * from Course\n" +
+                        "where courseId = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1,courseId);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                return new Course(rs.getInt(1),
+                                    rs.getString(2),
+                                    rs.getString(3));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
     
     public List<Category> getAllCategory(){
