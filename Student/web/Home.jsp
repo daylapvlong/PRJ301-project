@@ -23,7 +23,7 @@
                             <div class="inner-form">
                                 <form class="enter_code_form" action="">
                                     <input class="enter_code_input" id="choices-text-preset-values" type="text"
-                                        placeholder="Enter quiz code..." />
+                                        placeholder="Find a course..." />
                                     <button class="enter_code_button" type="button">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24">
@@ -58,16 +58,23 @@
                                 </c:forEach>
                             </div>
                         </div>
-
-                        <div class="content_container">
-                            <c:forEach items="${listCourse}" var="o">
-                                <div class="content_wrapper">
-                                    <h2>${o.courseName}</h2>
-                                    <p>${o.description}</p>
-                                    <a class="content_button" href="Course?courseid=${o.courseId}">View course now</a>
+                        <section class="">
+                            <div class="content_container container mt-5">
+                                <div
+                                    class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                                    <c:forEach items="${listCourse}" var="o">
+                                        <div class="col mb-5">
+                                            <div class="content_wrapper card">
+                                                <h2>${o.courseName}</h2>
+                                                <p>${o.description}</p>
+                                                <a class="content_button" href="Course?courseid=${o.courseId}">View
+                                                    course now</a>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
                                 </div>
-                            </c:forEach>
-                        </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
 

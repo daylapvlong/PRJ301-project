@@ -5,6 +5,7 @@
 package Controller;
 
 import Dal.HomeDAO;
+import Model.Course;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -18,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * @author admin's
  */
 @WebServlet(name = "Course", urlPatterns = {"/course"})
-public class Course extends HttpServlet {
+public class CourseCtrl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,9 +35,9 @@ public class Course extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String courseId = request.getParameter("courseid");
         HomeDAO dao = new HomeDAO();
-        Model.Course c = dao.getCourseById(courseId);
+        Course c = dao.getCourseById(courseId);
         
-        request.setAttribute("Course", c);
+        request.setAttribute("course", c);
         request.getRequestDispatcher("Course.jsp").forward(request, response);
         
     }
