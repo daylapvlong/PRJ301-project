@@ -22,6 +22,15 @@ Create table Course (
 	FOREIGN KEY (categoryId) REFERENCES Category(categoryId)
 )
 
+CREATE TABLE quiz (
+  quizid int NOT NULL primary key,
+  quizname varchar(100) NOT NULL,
+  numOfQuestion int NOT NULL,
+  timestamp datetime NOT NULL,
+  courseId int NOT NULL,
+  FOREIGN KEY (courseId) REFERENCES Course(courseId)
+)
+
 INSERT INTO Account (name, email, password, isStudent, isTeacher)
 VALUES ('John Doe', 'johndoe@example.com', 'password123', 1, 0),
        ('Jane Doe', 'janedoe@example.com', 'password456', 1, 0),
@@ -53,6 +62,14 @@ VALUES (1, 'Semester 1'),
        (3, 'Semester 3'),
 	   (4, 'Semester 4');
 
+
+INSERT INTO quiz (quizid, quizname, numOfQuestion, timestamp, courseId)
+VALUES (1, 'PT1', 10, '2023-06-13 09:00:00',1),
+		(2, 'PT2', 20, '2023-06-15 18:45:00',1),
+		(3, 'FE', 20, '2023-06-15 18:45:00',1);
+		(4, 'PT1', 10, '2023-06-13 09:00:00',2),
+		(5, 'PT2', 20, '2023-06-15 18:45:00',2),
+		(6, 'FE', 20, '2023-06-15 18:45:00',2);
 
 select * from Account
 

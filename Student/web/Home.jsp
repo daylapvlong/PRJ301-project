@@ -21,10 +21,10 @@
                     <div class="body_function_container">
                         <div class="enter_code_container col-sm-7">
                             <div class="inner-form">
-                                <form class="enter_code_form" action="">
-                                    <input class="enter_code_input" id="choices-text-preset-values" type="text"
+                                <form class="enter_code_form" action="search" method="post">
+                                    <input name="txt" type="text" class="enter_code_input" id="choices-text-preset-values" type="text"
                                         placeholder="Find a course..." />
-                                    <button class="enter_code_button" type="button">
+                                    <button class="enter_code_button" type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24">
                                             <path
@@ -67,7 +67,7 @@
                                             <div class="content_wrapper card">
                                                 <h2>${o.courseName}</h2>
                                                 <p>${o.description}</p>
-                                                <a class="content_button" href="Course?courseid=${o.courseId}">View
+                                                <a class="content_button" href="course?courseid=${o.courseId}">View
                                                     course now</a>
                                             </div>
                                         </div>
