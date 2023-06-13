@@ -139,7 +139,7 @@ public class HomeDAO extends DBContext{
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setInt(1, ((index-1)*3));
+            ps.setInt(1, ((index-1)*8));
             rs = ps.executeQuery();
             while(rs.next()){
                 list.add(new Course(rs.getInt(1),
