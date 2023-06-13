@@ -80,7 +80,7 @@
                                         <li>
                                             <a href="#" class="pageSelector_box">&laquo;</a>
                                             <c:forEach begin="1" end="${endP}" var="o">
-                                                <a href="home?index=${o}" class="pageSelector_box">${o}</a>
+                                                <a href="home?index=${o}" class="pageSelector_box ${tag == o?"active":""}">${o}</a>
                                             </c:forEach>
                                             <a href="#" class="pageSelector_box">&raquo;</a>
                                         </li>

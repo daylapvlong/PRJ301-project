@@ -38,10 +38,21 @@ public class Home extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String indexPage = request.getParameter("index");
-        int index = Integer.parseInt(indexPage);
-        
+        int index;
+        if (indexPage != null && !indexPage.isEmpty()) {
+            try {
+                index = Integer.parseInt(indexPage);
+            } catch (NumberFormatException e) {
+                // Handle the case when indexPage is not a valid integer
+                // Set a default value or show an error message
+                index = 1; // Default value, you can change it as needed
+            }
+        } else {
+            index = 1; // Default value, you can change it as needed
+        }
+ 
         HomeDAO dao = new HomeDAO();
-//        List<Course> list = dao.getAllCourse();
+        List<Course> list = dao.getAllCourse();
         List<Course> listP = dao.pagingCourse(index);
         List<Category> listC = dao.getAllCategory();
         int count = dao.getAllCount();
@@ -50,8 +61,9 @@ public class Home extends HttpServlet {
             endPage++;
         }
         
-//        request.setAttribute("listCourse", list);        
+        request.setAttribute("listCourse", list);        
         request.setAttribute("listPaging", listP);
+        request.setAttribute("tag", index);
         request.setAttribute("listCategory", listC);
         request.setAttribute("endP", endPage);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
