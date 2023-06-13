@@ -62,7 +62,7 @@
                             <div class="content_container container mt-5">
                                 <div
                                     class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                                    <c:forEach items="${listCourse}" var="o">
+                                    <c:forEach items="${listPaging}" var="o">
                                         <div class="col mb-5">
                                             <div class="content_wrapper card">
                                                 <h2>${o.courseName}</h2>
@@ -74,6 +74,18 @@
                                     </c:forEach>
                                 </div>
                             </div>
+                            
+                            <div class="pageSelector">
+                                    <ul class="pageSelector_list">
+                                        <li>
+                                            <a href="#" class="pageSelector_box">&laquo;</a>
+                                            <c:forEach begin="1" end="${endP}" var="o">
+                                                <a href="home?index=${o}" class="pageSelector_box">${o}</a>
+                                            </c:forEach>
+                                            <a href="#" class="pageSelector_box">&raquo;</a>
+                                        </li>
+                                    </ul>
+                                </div>
                         </section>
                     </div>
                 </div>

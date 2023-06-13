@@ -148,8 +148,8 @@ body {
     padding: 30px;
   }
 
-  .quiz_container {
-
+  .quiz_container ul{
+    list-style-type: none;
   }
 
   .quiz_navbar {

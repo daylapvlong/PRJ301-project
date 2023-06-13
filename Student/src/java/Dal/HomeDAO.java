@@ -116,6 +116,42 @@ public class HomeDAO extends DBContext{
         return list;
     }
     
+    public int getAllCount(){
+        String query = "select count(*) from Course";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+    
+    public List<Course> pagingCourse(int index){
+        List<Course> list = new ArrayList<>();
+        String query = "select * from Course \n" +
+                        "order by courseId \n" +
+                        "offset ? rows fetch next 8 rows only";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, ((index-1)*3));
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Course(rs.getInt(1),
+                                    rs.getString(2),
+                                    rs.getString(3)));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+    
     public static void main(String[] args) {
         HomeDAO dao = new HomeDAO();
 //        List<Category> list = dao.getAllCategory();
@@ -123,9 +159,18 @@ public class HomeDAO extends DBContext{
 //            System.out.println(o);
 //        }
 
-        List<Course> list = dao.getAllCourse();
-        for (Course o : list) {
-            System.out.println(o);
-        }
+//        List<Course> list = dao.getAllCourse();
+//        for (Course o : list) {
+//            System.out.println(o);
+//        }
+    
+//            int count = dao.getAllCount();
+//            System.out.println(count);
+
+            List<Course> list = dao.pagingCourse(1);
+            for(Course o : list){
+                System.out.println(o);
+            }
+    
     }
 }
