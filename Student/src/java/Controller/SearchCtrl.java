@@ -38,7 +38,7 @@ public class SearchCtrl extends HttpServlet {
         HomeDAO dao = new HomeDAO();
         List<Course> list = dao.searchCourseByName(txtSearch);
         
-        request.setAttribute("listCourse", list);
+        request.setAttribute("listPaging", list);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
     }
 

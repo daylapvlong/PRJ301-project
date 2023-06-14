@@ -163,14 +163,20 @@ public class HomeDAO extends DBContext{
 //        for (Course o : list) {
 //            System.out.println(o);
 //        }
+
+//        String cid = "your_category_id";
+//        List<Course> list = dao.getCourseByCategory(cid);
+//        for(Course o: list){
+//            System.out.println(o);
+//        }
     
 //            int count = dao.getAllCount();
 //            System.out.println(count);
 
-            List<Course> list = dao.pagingCourse(1);
-            for(Course o : list){
-                System.out.println(o);
-            }
+//            List<Course> list = dao.pagingCourse(1);
+//            for(Course o : list){
+//                System.out.println(o);
+//            }
     
     }
 }

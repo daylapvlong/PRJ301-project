@@ -22,8 +22,8 @@
                         <div class="enter_code_container col-sm-7">
                             <div class="inner-form">
                                 <form class="enter_code_form" action="search" method="post">
-                                    <input name="txt" type="text" class="enter_code_input" id="choices-text-preset-values" type="text"
-                                        placeholder="Find a course..." />
+                                    <input name="txt" type="text" class="enter_code_input"
+                                        id="choices-text-preset-values" type="text" placeholder="Find a course..." />
                                     <button class="enter_code_button" type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24">
@@ -74,18 +74,35 @@
                                     </c:forEach>
                                 </div>
                             </div>
-                            
+
                             <div class="pageSelector">
-                                    <ul class="pageSelector_list">
-                                        <li>
-                                            <a href="#" class="pageSelector_box">&laquo;</a>
-                                            <c:forEach begin="1" end="${endP}" var="o">
-                                                <a href="home?index=${o}" class="pageSelector_box ${tag == o?"active":""}">${o}</a>
-                                            </c:forEach>
-                                            <a href="#" class="pageSelector_box">&raquo;</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <ul class="pageSelector_list">
+                                    <li>
+                                        <c:choose>
+                                            <c:when test="${tag > 1}">
+                                                <a href="#" class="pageSelector_box"
+                                                    onclick="previousPage()">&laquo;</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="pageSelector_box disabled">&laquo;</span>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        
+                                        <c:forEach begin="1" end="${endP}" var="o">
+                                            <a href="home?index=${o}" class="pageSelector_box">${o}</a>
+                                        </c:forEach>
+
+                                        <c:choose>
+                                            <c:when test="${tag < endP}">
+                                                <a href="#" class="pageSelector_box" onclick="nextPage()">&raquo;</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="pageSelector_box disabled">&raquo;</span>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </li>
+                                </ul>
+                            </div>
                         </section>
                     </div>
                 </div>
@@ -110,6 +127,23 @@
                                     openDropdown.classList.remove('show');
                                 }
                             }
+                        }
+                    }
+
+                    function previousPage() {
+                        var currentPage = parseInt("${tag}");
+                        if (currentPage > 1) {
+                            var previousPage = currentPage - 1;
+                            window.location.href = "home?index=" + previousPage;
+                        }
+                    }
+
+                    function nextPage() {
+                        var currentPage = parseInt("${tag}");
+                        var totalPages = parseInt("${endP}");
+                        if (currentPage < totalPages) {
+                            var nextPage = currentPage + 1;
+                            window.location.href = "home?index=" + nextPage;
                         }
                     }
                 </script>

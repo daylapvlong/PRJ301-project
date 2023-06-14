@@ -150,7 +150,6 @@
     justify-content: space-evenly;
     align-items: center;
     padding: 0 50px 50px 50px; 
-    font-size: larger;
 }
 
 .pageSelector_list {
@@ -160,8 +159,9 @@
 .pageSelector_box {
     border: 1px solid black;
     box-shadow: 0 2px 4px #0000001a;
-    padding: 14px 20px;
-    margin: 0 10px 0 10px;
+    padding: 10px 20px;
+    margin: 0 5px 0 5px;
+    font-size: 20px;
 }
 
 .pageSelector_box:hover:not(.active) {background-color: #ddd;}

@@ -40,7 +40,7 @@ public class Category extends HttpServlet {
         List<Course> list = dao.getCourseByCategory(categoryId);
         List<Model.Category> listC = dao.getAllCategory();
         
-        request.setAttribute("listCourse", list);
+        request.setAttribute("listPaging", list);
         request.setAttribute("listCategory", listC);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
 

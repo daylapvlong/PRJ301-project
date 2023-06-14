@@ -52,7 +52,7 @@ public class Home extends HttpServlet {
         }
  
         HomeDAO dao = new HomeDAO();
-        List<Course> list = dao.getAllCourse();
+//        List<Course> list = dao.getAllCourse();
         List<Course> listP = dao.pagingCourse(index);
         List<Category> listC = dao.getAllCategory();
         int count = dao.getAllCount();
@@ -61,7 +61,7 @@ public class Home extends HttpServlet {
             endPage++;
         }
         
-        request.setAttribute("listCourse", list);        
+//        request.setAttribute("listCourse", list);        
         request.setAttribute("listPaging", listP);
         request.setAttribute("tag", index);
         request.setAttribute("listCategory", listC);
