@@ -158,6 +158,10 @@ public class HomeDAO extends DBContext{
 //        for(Category o : list){
 //            System.out.println(o);
 //        }
+        String courseId = "1";
+        Course c = dao.getCourseById(courseId);
+        System.out.println(c);
+
 
 //        List<Course> list = dao.getAllCourse();
 //        for (Course o : list) {

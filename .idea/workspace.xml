@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05b0095f-5c90-48d7-9dc3-337a356d7da4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/PRJ_dtb.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Student/nbproject/build-impl.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Student/nbproject/genfiles.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Student/nbproject/project.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Student/nbproject/project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/src/java/Dal/LoginDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Student/src/java/Dal/LoginDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/src/java/Model/Answer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/src/java/Model/Question.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/src/java/Model/Result.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/src/java/Model/ResultRecord.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/src/java/Model/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/src/java/Model/TestSession.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/web/Home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Student/web/Home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student/web/css/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/Student/web/css/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Student/src/java/Controller/CourseCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Student/src/java/Controller/CourseCtrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Student/src/java/Dal/HomeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Student/src/java/Dal/HomeDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +30,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Coding/Github/PRJ301-project",
+    "last_opened_file_path": "D:/Coding/Github/PRJ301-project/Student",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -60,6 +49,8 @@
       <option name="presentableId" value="Default" />
       <updated>1686142013477</updated>
       <workItem from="1686142015687" duration="284000" />
+      <workItem from="1686743790275" duration="131000" />
+      <workItem from="1686743930171" duration="52000" />
     </task>
     <servers />
   </component>
