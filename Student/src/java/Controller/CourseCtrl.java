@@ -4,8 +4,10 @@
  */
 package Controller;
 
+import Dal.CourseDAO;
 import Dal.HomeDAO;
 import Model.Course;
+import Model.Quiz;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,6 +15,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  *
@@ -34,9 +38,15 @@ public class CourseCtrl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String courseId = request.getParameter("courseid");
-        HomeDAO dao = new HomeDAO();
-        Course c = dao.getCourseById(courseId);
+        String cid = request.getParameter("courseid");
         
+        HomeDAO dao = new HomeDAO();
+        CourseDAO cdao = new CourseDAO();
+        
+        Course c = dao.getCourseById(courseId);
+        List<Quiz> listQ = cdao.getAllQuiz(cid);
+        
+        request.setAttribute("listQuiz", listQ);
         request.setAttribute("course", c);
         request.getRequestDispatcher("Course.jsp").forward(request, response);
         

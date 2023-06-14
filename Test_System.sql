@@ -26,7 +26,8 @@ CREATE TABLE quiz (
   quizid int NOT NULL primary key,
   quizname varchar(100) NOT NULL,
   numOfQuestion int NOT NULL,
-  timestamp datetime NOT NULL,
+  dateCreated date NOT NULL,
+  timeLimit time NOT NULL,
   courseId int NOT NULL,
   FOREIGN KEY (courseId) REFERENCES Course(courseId)
 )
@@ -75,13 +76,19 @@ VALUES (1, 'Semester 1'),
 	   (4, 'Semester 4');
 
 
-INSERT INTO quiz (quizid, quizname, numOfQuestion, timestamp, courseId)
-VALUES (1, 'PT1', 10, '2023-06-13 09:00:00',1),
-		(2, 'PT2', 20, '2023-06-15 18:45:00',1),
-		(3, 'FE', 20, '2023-06-15 18:45:00',1),
-		(4, 'PT1', 10, '2023-06-13 09:00:00',2),
-		(5, 'PT2', 20, '2023-06-15 18:45:00',2),
-		(6, 'FE', 20, '2023-06-15 18:45:00',2);
+INSERT INTO quiz (quizid, quizname, numOfQuestion, dateCreated, timeLimit, courseId)
+VALUES  (1, 'PT1', 10, '2023-06-13' ,'00:30:00',1),
+		(2, 'PT2', 20, '2023-06-15', '00:30:00', 1),
+		(3, 'FE', 20, '2023-06-15', '00:30:00',1),
+		(4, 'PT1', 10, '2023-06-13', '00:30:00', 2),
+		(5, 'PT2', 20, '2023-06-15', '00:30:00', 2),
+		(6, 'FE', 20, '2023-06-15', '00:30:00', 2),
+		(7, 'PT1', 10, '2023-06-13', '00:30:00', 3),
+		(8, 'PT2', 20, '2023-06-15', '00:30:00', 3),
+		(9, 'FE', 20, '2023-06-15', '00:30:00', 3),
+		(10, 'PT1', 10, '2023-06-13', '00:30:00', 4),
+		(11, 'PT2', 20, '2023-06-15', '00:30:00', 4),
+		(12, 'FE', 20, '2023-06-15', '00:30:00', 4);
 
 select * from Account
 

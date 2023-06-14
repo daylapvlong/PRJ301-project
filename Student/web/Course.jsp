@@ -80,19 +80,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach begin="1" end="5">
+                                <c:forEach items="${listQuiz}" var="o">
                                     <tr class="quiz_table_body">
                                         <th scope="row">
-                                            FE sample
+                                            ${o.quizName}
                                         </th>
                                         <td class="px-6 py-4">
-                                            14/06/2021
+                                            ${o.dateCreated}
                                         </td>
                                         <td class="px-6 py-4">
-                                            50
+                                            ${o.numOfQuestions}
                                         </td>
                                         <td class="px-6 py-4">
-                                            30 minutes
+                                            ${o.timeLimit}
                                         </td>
                                         <td class="px-6 py-4">
                                             <a href="#" class="startbtn">Start</a>
