@@ -20,7 +20,23 @@
         <div class="navbar_right">
             <a class="navbar_icon" href="Login.jsp">Login</a>
             <a class="navbar_icon" href="SignUp.jsp">Sign up</a>
+            <a class="navbar_icon" href="javascript:logout()">Logout</a>
         </div>
     </nav>
+    
+    <script>
+        function logout() {
+            // Send an AJAX request to your logout servlet or endpoint
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'Logout', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Redirect the user to the login page or any other appropriate page
+                    window.location.href = 'Login.jsp';
+                }
+            };
+            xhr.send();
+        }
+    </script>
 </body>
 </html>

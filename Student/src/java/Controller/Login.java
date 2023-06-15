@@ -12,6 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -45,10 +46,15 @@ public class Login extends HttpServlet {
 "                                                       </div>");
                     request.getRequestDispatcher("Login.jsp").forward(request,response);
                 } else {
-                    request.getRequestDispatcher("Home.jsp").forward(request,response);
+                    // Store user information in session
+                    HttpSession session = request.getSession();
+                    session.setAttribute("email", a.getEmail());
+                    session.setAttribute("password", a.getPassword());
+
+                    request.getRequestDispatcher("WelcomePage.jsp").forward(request, response);
                 }
             } catch(Exception e){
-                
+                System.out.println(e);
             }
         }
     }
