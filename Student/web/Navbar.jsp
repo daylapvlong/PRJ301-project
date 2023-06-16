@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,14 +14,18 @@
         <div class="navbar_left">
             <a class="navbar_icon" href="WelcomePage.jsp">Home</a>
             <a class="navbar_icon" href="#about">About us</a>
-            <a class="navbar_icon" href="http://localhost:8080/Student/home">Courses</a>
+            <a class="navbar_icon" href="${sessionScope.acc == null ? 'Login.jsp' : 'home'}">Courses</a>
             <a class="navbar_icon" href="#">Create a quiz</a>
         </div>
 
         <div class="navbar_right">
-            <a class="navbar_icon" href="Login.jsp">Login</a>
-            <a class="navbar_icon" href="SignUp.jsp">Sign up</a>
-            <a class="navbar_icon" href="javascript:logout()">Logout</a>
+            <c:if test="${sessionScope.acc == null}">
+                <a class="navbar_icon" href="Login.jsp">Login</a>
+                <a class="navbar_icon" href="SignUp.jsp">Sign up</a>
+            </c:if>
+            <c:if test="${sessionScope.acc != null}">
+                <a class="navbar_icon" href="javascript:logout()">Logout</a>
+            </c:if>
         </div>
     </nav>
     

@@ -38,7 +38,7 @@
                         <div class="profile_container col-sm-4">
                             <div class="profile_box">
                                 <div class="profile_header">
-                                    <h2>Name of user</h2>
+                                    <h2>Hello ${sessionScope.name}</h2>
                                 </div>
                             </div>
                             <div class="profile_body">

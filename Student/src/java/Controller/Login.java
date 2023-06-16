@@ -9,6 +9,7 @@ import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -46,14 +47,24 @@ public class Login extends HttpServlet {
 "                                                       </div>");
                     request.getRequestDispatcher("Login.jsp").forward(request,response);
                 } else {
+                    String remember = request.getParameter("remember");
+                    if(remember !=null)
+                    {
+                        Cookie c_user = new Cookie("emailC", mail);
+                        Cookie c_pass = new Cookie("passC", pass);
+                        c_user.setMaxAge(60*60);
+                        c_pass.setMaxAge(60*60);
+                        response.addCookie(c_pass);
+                        response.addCookie(c_user);
+                    }
                     // Store user information in session
                     HttpSession session = request.getSession();
-                    session.setAttribute("email", a.getEmail());
-                    session.setAttribute("password", a.getPassword());
+                    session.setAttribute("acc", a);
+                    session.setAttribute("name", a.getName());
 
-                    request.getRequestDispatcher("WelcomePage.jsp").forward(request, response);
+                    request.getRequestDispatcher("home").forward(request, response);
                 }
-            } catch(Exception e){
+            } catch(ServletException | IOException e){
                 System.out.println(e);
             }
         }
@@ -71,7 +82,23 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+        
+        Cookie[] cookies = request.getCookies();
+        if(cookies!=null)
+        {
+            for (Cookie cooky : cookies) {
+                if(cooky.getName().equals("emailC")){
+                    request.setAttribute("email",cooky.getValue());
+                }
+                
+                if(cooky.getName().equals("passC")){
+                    request.setAttribute("password",cooky.getValue());
+                }
+            }
+            
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+        }
     }
 
     /**
