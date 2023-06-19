@@ -37,6 +37,19 @@ public class Login extends HttpServlet {
             try {
                 String mail = request.getParameter("email");
                 String pass = request.getParameter("password");
+                String remember = request.getParameter("remember");
+                
+                // set cookie for email and password
+                Cookie cookie1 = new Cookie("email", mail);
+                cookie1.setMaxAge(60 * 60 * 24);
+                Cookie cookie2 = new Cookie("password", pass);
+                if (remember != null) {
+                    cookie2.setMaxAge(60 * 60 * 24);
+                } else {
+                    cookie2.setMaxAge(0);
+                }
+                response.addCookie(cookie1);
+                response.addCookie(cookie2);
                 
                 LoginDAO login= new LoginDAO();
                 Account a = login.checkLogin(mail,pass);
@@ -46,17 +59,7 @@ public class Login extends HttpServlet {
 "                                                           <strong>Wrong user login!</strong> Please try again.\n" +
 "                                                       </div>");
                     request.getRequestDispatcher("Login.jsp").forward(request,response);
-                } else {
-                    String remember = request.getParameter("remember");
-                    if(remember !=null)
-                    {
-                        Cookie c_user = new Cookie("emailC", mail);
-                        Cookie c_pass = new Cookie("passC", pass);
-                        c_user.setMaxAge(60*60);
-                        c_pass.setMaxAge(60*60);
-                        response.addCookie(c_pass);
-                        response.addCookie(c_user);
-                    }
+                } else {                    
                     // Store user information in session
                     HttpSession session = request.getSession();
                     session.setAttribute("acc", a);
