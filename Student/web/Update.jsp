@@ -1,6 +1,6 @@
 <%-- 
-    Document   : WelcomePage
-    Created on : Jun 13, 2023, 8:59:27 AM
+    Document   : Update.jsp
+    Created on : Jun 18, 2023, 4:50:31 PM
     Author     : admin's
 --%>
 
@@ -12,10 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:include page="Navbar.jsp"></jsp:include>
-        
-        
-        
-        <jsp:include page="Footer.jsp"></jsp:include>
+        <h1>Hello World!</h1>
     </body>
 </html>

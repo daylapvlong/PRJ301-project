@@ -74,6 +74,11 @@ public class Account {
     public void setIsTeacher(int isTeacher) {
         this.isTeacher = isTeacher;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" + "Id=" + Id + ", name=" + name + ", email=" + email + ", password=" + password + ", isStudent=" + isStudent + ", isTeacher=" + isTeacher + '}';
+    }
     
     
 }

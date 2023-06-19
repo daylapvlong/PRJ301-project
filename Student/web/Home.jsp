@@ -42,9 +42,13 @@
                                 </div>
                             </div>
                             <div class="profile_body">
-                                <a class="" href="">Edit Profile</a>
-                                <p class="profile_body_slash">/</p>
-                                <a class="" href="">View Activity</a>
+                                <c:forEach items="${listAccount}" var="o">
+                                    <c:if test="${o.id == sessionScope.acc.id}">
+                                        <a class="" href="changeAccount?accid=${o.id}">Edit Profile</a>
+                                        <p class="profile_body_slash">/</p>
+                                        <a class="" href="">View Activity</a>
+                                    </c:if>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
