@@ -79,6 +79,4 @@ public class Account {
     public String toString() {
         return "Account{" + "Id=" + Id + ", name=" + name + ", email=" + email + ", password=" + password + ", isStudent=" + isStudent + ", isTeacher=" + isTeacher + '}';
     }
-    
-    
 }

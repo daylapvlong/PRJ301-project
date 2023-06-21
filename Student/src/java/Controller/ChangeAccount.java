@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,17 +34,7 @@ public class ChangeAccount extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
-        String id = request.getParameter("accid");
-        
-        ChangeDAO dao = new ChangeDAO();
-        Account a = dao.getAccountById(id);
-         
-        request.setAttribute("desiredAccountId", id);
-        request.setAttribute("a_update",a);
-        request.getRequestDispatcher("Home.jsp").forward(request,response);
-        request.getRequestDispatcher("Update.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");               
         
     }
 
@@ -59,7 +50,13 @@ public class ChangeAccount extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("accid");
+        
+        ChangeDAO dao = new ChangeDAO();
+        Account a = dao.getAccountById(id);
+
+        request.setAttribute("a_update",a);
+        request.getRequestDispatcher("Update.jsp").forward(request, response);
     }
 
     /**
@@ -73,7 +70,24 @@ public class ChangeAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        int accountId = -1;
+        String accountName = request.getParameter("name");
+        String accountEmail = request.getParameter("email");
+        String accountPassword = request.getParameter("password");
+        
+        Cookie[] cookies = request.getCookies();
+        ChangeDAO dao = new ChangeDAO();
+        
+        // get id from cookie
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("email")) {
+                accountId = dao.getAccountIDByEmail(cookie.getValue());
+            }
+        }
+        
+        dao.updateAccount(accountId, accountName, accountEmail, accountPassword);
+        response.sendRedirect("home");
     }
 
     /**

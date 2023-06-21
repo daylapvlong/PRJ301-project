@@ -44,7 +44,8 @@
                             <div class="profile_body">
                                 <c:forEach items="${listAccount}" var="o">
                                     <c:if test="${o.id == sessionScope.acc.id}">
-                                        <a class="" href="changeAccount?accid=${o.id}">Edit Profile</a>
+                                        <a class="" href="changeAccount?accid=${o.id}" onclick="redirectToUpdate()">Edit
+                                            Profile</a>
                                         <p class="profile_body_slash">/</p>
                                         <a class="" href="">View Activity</a>
                                     </c:if>
@@ -91,7 +92,7 @@
                                                 <span class="pageSelector_box disabled">&laquo;</span>
                                             </c:otherwise>
                                         </c:choose>
-                                        
+
                                         <c:forEach begin="1" end="${endP}" var="o">
                                             <a href="home?index=${o}" class="pageSelector_box">${o}</a>
                                         </c:forEach>
@@ -149,6 +150,14 @@
                             var nextPage = currentPage + 1;
                             window.location.href = "home?index=" + nextPage;
                         }
+                    }
+
+                    function redirectToUpdate() {
+                        // Redirect to Update.jsp
+                        window.location.href = "Update.jsp";
+
+                        // Prevent the default link behavior
+                        return false;
                     }
                 </script>
             </body>
