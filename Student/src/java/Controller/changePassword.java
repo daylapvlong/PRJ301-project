@@ -44,9 +44,9 @@ public class changePassword extends HttpServlet {
                 Account a = dao.checkEmail(mail);
             
                 if(a==null){
-                    request.setAttribute("loginMess", "<div class=\"alert\">\n" +
+                    request.setAttribute("passmess", "<div class=\"alert\">\n" +
 "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n" +
-"                                                           <strong>Wrong user login!</strong> Please try again.\n" +
+"                                                           <strong>Password dont match!</strong> Please try again.\n" +
 "                                                       </div>");
                     request.getRequestDispatcher("ForgotLogin.jsp").forward(request,response);
                 } else {
