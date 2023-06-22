@@ -43,12 +43,38 @@ public class CourseDAO extends DBContext {
         return list;
     }
     
+    public Quiz getQuizById(String quizId){
+        String query = "select * from quiz\n" +
+                        "where quizId = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1,quizId);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                return new Quiz(rs.getInt(1),
+                                rs.getString(2),
+                                rs.getInt(3),
+                                rs.getDate(4),
+                                rs.getTime(5));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
     public static void main(String[] args) {
         CourseDAO dao = new CourseDAO();
+        
         String cid = "1";
         List<Quiz> list = dao.getAllQuiz(cid);
         for(Quiz o : list){
             System.out.println(o);
         }
+
+//        String quizId ="1";
+//        Quiz quiz = dao.getQuizById(quizId);
+//        System.out.println(quiz);
     }
 }

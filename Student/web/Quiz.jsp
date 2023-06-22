@@ -1,5 +1,5 @@
 <%-- Document : Quiz Created on : Jun 13, 2023, 1:11:04 PM Author : admin's --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@page contentType="text/html" pageEncoding="UTF-8" %>
         <!DOCTYPE html>
         <html>
@@ -17,12 +17,12 @@
             <div id="display-container">
                 <div class="header">
                     <div class="number-of-count">
-                        <span class="number-of-question">1 of 3 questions</span>
+                        <span class="number-of-question">1 of ${quiz.numOfQuestions} questions</span>
                     </div>
                     <div class="timer-div">
                         <img src="https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/stopwatch-icon.png"
                             width="20px" />
-                        <span class="time-left">10s</span>
+                        <span class="time-left">${quiz.timeLimit}</span>
                     </div>
                 </div>
                 <div id="container">
@@ -194,10 +194,10 @@
                     div.appendChild(question_DIV);
                     //options
                     div.innerHTML += `
-    <button class="option-div" onclick="checker(this)">${i.options[0]}</button>
-     <button class="option-div" onclick="checker(this)">${i.options[1]}</button>
-      <button class="option-div" onclick="checker(this)">${i.options[2]}</button>
-       <button class="option-div" onclick="checker(this)">${i.options[3]}</button>
+                    <button class="option-div" onclick="checker(this)">${i.options[0]}</button>
+                    <button class="option-div" onclick="checker(this)">${i.options[1]}</button>
+                    <button class="option-div" onclick="checker(this)">${i.options[2]}</button>
+                    <button class="option-div" onclick="checker(this)">${i.options[3]}</button>
     `;
                     quizContainer.appendChild(div);
                 }

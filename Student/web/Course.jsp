@@ -95,7 +95,7 @@
                                             ${o.timeLimit}
                                         </td>
                                         <td class="px-6 py-4">
-                                            <a href="#" class="startbtn">Start</a>
+                                            <a href="quiz?quizid=${o.quizId}" class="startbtn">Start</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
