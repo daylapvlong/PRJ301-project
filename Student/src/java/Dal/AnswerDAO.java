@@ -28,9 +28,8 @@ public class AnswerDAO extends DBContext {
             rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt(1);
-                int quesId = rs.getInt(2);               
-                String contet = rs.getString(3);
-                boolean isCorrectAnswer = rs.getBoolean(4);
+                String contet = rs.getString(2);                           
+                boolean isCorrectAnswer = rs.getBoolean(3);
                 Answer ans = new Answer(id, questionId, contet, isCorrectAnswer);
                 listAnswer.add(ans);
             }
@@ -62,7 +61,7 @@ public class AnswerDAO extends DBContext {
     
     public static void main(String[] args) {
         AnswerDAO dao = new AnswerDAO();
-        ArrayList<Answer> list = dao.getCorrectAnswer(1);
+        ArrayList<Answer> list = dao.getListAnswer(1);
         System.out.println(list);
     }
 }

@@ -5,6 +5,8 @@
 package Controller;
 
 import Dal.CourseDAO;
+import Dal.HomeDAO;
+import Model.Course;
 import Model.Quiz;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,12 +37,16 @@ public class SearchCourse extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        HomeDAO dao = new HomeDAO();
         CourseDAO cdao = new CourseDAO();
-        String txtSearch = request.getParameter("txt");
+        
+        String txtSearch = request.getParameter("txt");    
         String cid = cdao.getCourseIdByQuizName(txtSearch);
         
         List<Quiz> searchQ = cdao.searchQuizByName(txtSearch, cid);
+        Course c = dao.getCourseById(cid);
         
+        request.setAttribute("course", c);
         request.setAttribute("listQuiz", searchQ);
         request.getRequestDispatcher("Course.jsp").forward(request, response);
     }

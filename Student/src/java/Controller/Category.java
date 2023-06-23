@@ -4,7 +4,9 @@
  */
 package Controller;
 
+import Dal.ChangeDAO;
 import Dal.HomeDAO;
+import Model.Account;
 import Model.Course;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,9 +39,13 @@ public class Category extends HttpServlet {
         String categoryId = request.getParameter("cid");
         
         HomeDAO dao = new HomeDAO();
+        ChangeDAO changeDao = new ChangeDAO();
+        
         List<Course> list = dao.getCourseByCategory(categoryId);
         List<Model.Category> listC = dao.getAllCategory();
-        
+        List<Account> listA = changeDao.getAllAccount();
+       
+        request.setAttribute("listAccount", listA);
         request.setAttribute("listPaging", list);
         request.setAttribute("listCategory", listC);
         request.getRequestDispatcher("Home.jsp").forward(request, response);

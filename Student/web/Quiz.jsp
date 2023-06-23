@@ -11,6 +11,10 @@
         </head>
 
         <body>
+            <div class="close-container" id="closeButton" onclick="history.back()">
+                <div class="leftright"></div>
+                <div class="rightleft"></div>
+            </div>
             <div class="start-screen">
                 <button id="start-button">Start</button>
             </div>
@@ -20,8 +24,7 @@
                         <span class="number-of-question">1 of ${quiz.numOfQuestions} questions</span>
                     </div>
                     <div class="timer-div">
-                        <img src="https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/stopwatch-icon.png"
-                            width="20px" />
+                        <p>time:</p>
                         <span class="time-left">${quiz.timeLimit}</span>
                     </div>
                 </div>
@@ -151,6 +154,12 @@
                 })
             );
 
+            //Back button
+            // var closeButton = document.getElementById("closeButton");
+            //     closeButton.addEventListener("click", function () {
+            //         window.location.href = "course";
+            //     });
+
             //Timer
             const timerDisplay = () => {
                 countdown = setInterval(() => {
@@ -198,7 +207,7 @@
                     <button class="option-div" onclick="checker(this)">${i.options[1]}</button>
                     <button class="option-div" onclick="checker(this)">${i.options[2]}</button>
                     <button class="option-div" onclick="checker(this)">${i.options[3]}</button>
-    `;
+                    `;
                     quizContainer.appendChild(div);
                 }
             }
