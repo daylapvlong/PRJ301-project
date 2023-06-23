@@ -52,7 +52,7 @@ public class SignUp extends HttpServlet {
                 if(a==null){
                     //dc signup
                     signup.signup(name, mail, pass);
-                    response.sendRedirect("Home.jsp");
+                    response.sendRedirect("Login.jsp");
                 } else {
                     //quay lai signup
                     request.setAttribute("namemess", "<div class=\"alert\">\n" +

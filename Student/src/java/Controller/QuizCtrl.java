@@ -4,10 +4,8 @@
  */
 package Controller;
 
-import Dal.ChangeDAO;
-import Dal.HomeDAO;
-import Model.Account;
-import Model.Course;
+import Dal.CourseDAO;
+import Model.Quiz;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,43 +13,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  *
  * @author admin's
  */
-@WebServlet(name = "Category", urlPatterns = {"/category"})
-public class Category extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String categoryId = request.getParameter("cid");
-        
-        HomeDAO dao = new HomeDAO();
-        ChangeDAO changeDao = new ChangeDAO();
-        
-        List<Course> list = dao.getCourseByCategory(categoryId);
-        List<Model.Category> listC = dao.getAllCategory();
-        List<Account> listA = changeDao.getAllAccount();
-       
-        request.setAttribute("listAccount", listA);
-        request.setAttribute("listPaging", list);
-        request.setAttribute("listCategory", listC);
-        request.getRequestDispatcher("Home.jsp").forward(request, response);
-
-        
-    }
+@WebServlet(name = "QuizCtrl", urlPatterns = {"/quiz"})
+public class QuizCtrl extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -65,7 +33,13 @@ public class Category extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String quizId = request.getParameter("quizid");
+        
+        CourseDAO cdao = new CourseDAO();
+        Quiz quiz = cdao.getQuizById(quizId);
+        
+        request.setAttribute("quiz", quiz);
+        request.getRequestDispatcher("Quiz.jsp").forward(request, response);
     }
 
     /**
@@ -79,7 +53,7 @@ public class Category extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 
     /**

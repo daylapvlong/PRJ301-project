@@ -6,6 +6,7 @@ package Model;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
 /**
  *
@@ -20,7 +21,6 @@ public class Quiz {
     
     public Quiz() {}
 
-    // Constructor
     public Quiz(int quizId, String quizName, int numOfQuestions, Date dateCreated, Time timeLimit) {
         this.quizId = quizId;
         this.quizName = quizName;
@@ -28,6 +28,7 @@ public class Quiz {
         this.dateCreated = dateCreated;
         this.timeLimit = timeLimit;
     }
+
 
     // Getters and Setters
     public int getQuizId() {

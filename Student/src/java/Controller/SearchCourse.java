@@ -4,10 +4,10 @@
  */
 package Controller;
 
-import Dal.ChangeDAO;
+import Dal.CourseDAO;
 import Dal.HomeDAO;
-import Model.Account;
 import Model.Course;
+import Model.Quiz;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -21,8 +21,8 @@ import java.util.List;
  *
  * @author admin's
  */
-@WebServlet(name = "Category", urlPatterns = {"/category"})
-public class Category extends HttpServlet {
+@WebServlet(name = "SearchCourse", urlPatterns = {"/searchCourse"})
+public class SearchCourse extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,22 +36,21 @@ public class Category extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String categoryId = request.getParameter("cid");
         
         HomeDAO dao = new HomeDAO();
-        ChangeDAO changeDao = new ChangeDAO();
+        CourseDAO cdao = new CourseDAO();
         
-        List<Course> list = dao.getCourseByCategory(categoryId);
-        List<Model.Category> listC = dao.getAllCategory();
-        List<Account> listA = changeDao.getAllAccount();
-       
-        request.setAttribute("listAccount", listA);
-        request.setAttribute("listPaging", list);
-        request.setAttribute("listCategory", listC);
-        request.getRequestDispatcher("Home.jsp").forward(request, response);
-
+        String txtSearch = request.getParameter("txt");    
+        String cid = cdao.getCourseIdByQuizName(txtSearch);
         
+        List<Quiz> searchQ = cdao.searchQuizByName(txtSearch, cid);
+        Course c = dao.getCourseById(cid);
+        
+        request.setAttribute("course", c);
+        request.setAttribute("listQuiz", searchQ);
+        request.getRequestDispatcher("Course.jsp").forward(request, response);
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
