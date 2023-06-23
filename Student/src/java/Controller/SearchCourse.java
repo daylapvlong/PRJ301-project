@@ -4,21 +4,23 @@
  */
 package Controller;
 
-import Dal.SignUpDAO;
-import Model.Account;
+import Dal.CourseDAO;
+import Model.Quiz;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-
+import java.util.List;
 
 /**
  *
  * @author admin's
  */
-public class SignUp extends HttpServlet {
+@WebServlet(name = "SearchCourse", urlPatterns = {"/searchCourse"})
+public class SearchCourse extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,38 +34,17 @@ public class SignUp extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String name = request.getParameter("name");
-            String mail = request.getParameter("email");
-            String pass = request.getParameter("password");
-            String re_pass = request.getParameter("re_pass");
-            
-            if(!pass.equals(re_pass)){
-                //check pass va repass cp trung nhau k?
-                request.setAttribute("passmess", "<div class=\"alert\">\n" +
-"                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n" +
-"                                                           <strong>Password dont match!</strong> Please try again.\n" +
-"                                                       </div>");
-                request.getRequestDispatcher("SignUp.jsp").forward(request,response);
-            } else {
-                SignUpDAO signup = new SignUpDAO();
-                Account a = signup.checkAccountExist(mail);
-                if(a==null){
-                    //dc signup
-                    signup.signup(name, mail, pass);
-                    response.sendRedirect("Login.jsp");
-                } else {
-                    //quay lai signup
-                    request.setAttribute("namemess", "<div class=\"alert\">\n" +
-"                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n" +
-"                                                           <strong>Email existed!</strong> Please try again.\n" +
-"                                                       </div>");
-                     request.getRequestDispatcher("SignUp.jsp").forward(request,response);
-                }
-            }
-        }
+        
+        CourseDAO cdao = new CourseDAO();
+        String txtSearch = request.getParameter("txt");
+        String cid = cdao.getCourseIdByQuizName(txtSearch);
+        
+        List<Quiz> searchQ = cdao.searchQuizByName(txtSearch, cid);
+        
+        request.setAttribute("listQuiz", searchQ);
+        request.getRequestDispatcher("Course.jsp").forward(request, response);
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

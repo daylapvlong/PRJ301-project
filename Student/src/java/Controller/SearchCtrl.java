@@ -6,6 +6,7 @@ package Controller;
 
 import Dal.HomeDAO;
 import Model.Course;
+import Model.Quiz;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -36,8 +37,9 @@ public class SearchCtrl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String txtSearch = request.getParameter("txt");
         HomeDAO dao = new HomeDAO();
+
         List<Course> list = dao.searchCourseByName(txtSearch);
-        
+       
         request.setAttribute("listPaging", list);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
     }

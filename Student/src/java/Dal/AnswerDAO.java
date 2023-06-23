@@ -41,9 +41,31 @@ public class AnswerDAO extends DBContext {
         return null;
     }
     
+    public ArrayList<Answer> getCorrectAnswer(int questionId) {
+        ArrayList<Answer> listAnswer = new ArrayList<>();
+        String query = "SELECT * FROM Answer WHERE questionID = ? and isCorrectAnswer = 1";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1,questionId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Answer ans = new Answer(rs.getInt(1), rs.getInt(2), rs.getString(4), rs.getBoolean(3));
+                listAnswer.add(ans);
+            }
+            return listAnswer;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
     public static void main(String[] args) {
         AnswerDAO dao = new AnswerDAO();
-        ArrayList<Answer> list = dao.getListAnswer(1);
+        ArrayList<Answer> list = dao.getCorrectAnswer(1);
         System.out.println(list);
     }
 }
+
+
+//com.microsoft.sqlserver.jdbc.SQLServerException: An error occurred while converting the varchar value to JDBC data type INTEGER.
