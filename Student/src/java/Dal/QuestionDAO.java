@@ -38,7 +38,7 @@ public class QuestionDAO {
             }
             return listQuestion;
         } catch (Exception e) {
-            System.out.println(e);;
+            System.out.println(e);
         }
         return null;
     }
@@ -83,7 +83,11 @@ public class QuestionDAO {
     
     public static void main(String[] args) {
         QuestionDAO dao = new QuestionDAO();
-        ArrayList<Question> list = dao.getListQuestion(1);
+        ArrayList<Integer> questionDone = new ArrayList<>();
+//        ArrayList<Question> list = dao.getListQuestion(1);
+//        System.out.println(list);
+
+        ArrayList<Question> list = dao.getListQuestionNotDone(1,questionDone);
         System.out.println(list);
     }
 }

@@ -4,7 +4,11 @@
  */
 package Controller;
 
+import Dal.AnswerDAO;
 import Dal.CourseDAO;
+import Dal.QuestionDAO;
+import Model.Answer;
+import Model.Question;
 import Model.Quiz;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +17,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 /**
  *
@@ -36,9 +41,18 @@ public class QuizCtrl extends HttpServlet {
         String quizId = request.getParameter("quizid");
         
         CourseDAO cdao = new CourseDAO();
-        Quiz quiz = cdao.getQuizById(quizId);
+        QuestionDAO qdao = new QuestionDAO();
+        AnswerDAO adao = new AnswerDAO();
         
+        Quiz quiz = cdao.getQuizById(quizId);
+        ArrayList<Question> listQuestion = qdao.getListQuestion(1);
+        ArrayList<Answer> listAnswer = adao.getListAnswer(1);
+        ArrayList<Answer> listCorrectAnswer = adao.getCorrectAnswer(1);
+     
         request.setAttribute("quiz", quiz);
+        request.setAttribute("listQuiz", listQuestion);
+        request.setAttribute("listAnswer", listAnswer);
+        request.setAttribute("correctAnswer", listCorrectAnswer);
         request.getRequestDispatcher("Quiz.jsp").forward(request, response);
     }
 
@@ -53,7 +67,7 @@ public class QuizCtrl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
     }
 
     /**

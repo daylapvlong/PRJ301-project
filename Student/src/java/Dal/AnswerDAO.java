@@ -49,7 +49,10 @@ public class AnswerDAO extends DBContext {
             ps.setInt(1,questionId);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Answer ans = new Answer(rs.getInt(1), rs.getInt(2), rs.getString(4), rs.getBoolean(3));
+                int id = rs.getInt(1);
+                String contet = rs.getString(2);                           
+                boolean isCorrectAnswer = rs.getBoolean(3);
+                Answer ans = new Answer(id, questionId, contet, isCorrectAnswer);
                 listAnswer.add(ans);
             }
             return listAnswer;
@@ -61,10 +64,11 @@ public class AnswerDAO extends DBContext {
     
     public static void main(String[] args) {
         AnswerDAO dao = new AnswerDAO();
-        ArrayList<Answer> list = dao.getListAnswer(1);
+//        ArrayList<Answer> list = dao.getListAnswer(1);
+//        System.out.println(list);
+
+        ArrayList<Answer> list = dao.getCorrectAnswer(1);
         System.out.println(list);
     }
 }
 
-
-//com.microsoft.sqlserver.jdbc.SQLServerException: An error occurred while converting the varchar value to JDBC data type INTEGER.
