@@ -64,11 +64,11 @@ public class AnswerDAO extends DBContext {
     
     public static void main(String[] args) {
         AnswerDAO dao = new AnswerDAO();
-//        ArrayList<Answer> list = dao.getListAnswer(1);
-//        System.out.println(list);
-
-        ArrayList<Answer> list = dao.getCorrectAnswer(1);
+        ArrayList<Answer> list = dao.getListAnswer(1);
         System.out.println(list);
+
+//        ArrayList<Answer> list = dao.getCorrectAnswer(1);
+//        System.out.println(list);
     }
 }
 

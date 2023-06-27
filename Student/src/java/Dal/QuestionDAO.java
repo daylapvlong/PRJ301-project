@@ -84,10 +84,10 @@ public class QuestionDAO {
     public static void main(String[] args) {
         QuestionDAO dao = new QuestionDAO();
         ArrayList<Integer> questionDone = new ArrayList<>();
-//        ArrayList<Question> list = dao.getListQuestion(1);
-//        System.out.println(list);
-
-        ArrayList<Question> list = dao.getListQuestionNotDone(1,questionDone);
+        ArrayList<Question> list = dao.getListQuestion(1);
         System.out.println(list);
+
+//        ArrayList<Question> list = dao.getListQuestionNotDone(1,questionDone);
+//        System.out.println(list);
     }
 }

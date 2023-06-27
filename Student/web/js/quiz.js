@@ -16,67 +16,21 @@ let countdown;
 
 //Questions and Options array
 
-const quizArray = [
-    {
-        id: "0",
-        question: "Which is the most widely spoken language in the world?",
-        options: ["Spanish", "Mandarin", "English", "German"],
-        correct: "Mandarin",
-    },
-    {
-        id: "1",
-        question: "Which is the only continent in the world without a desert?",
-        options: ["North America", "Asia", "Africa", "Europe"],
-        correct: "Europe",
-    },
-    {
-        id: "2",
-        question: "Who invented Computer?",
-        options: ["Charles Babbage", "Henry Luce", "Henry Babbage", "Charles Luce"],
-        correct: "Charles Babbage",
-    },
-    {
-        id: "3",
-        question: "What do you call a computer on a network that requests files from another computer?",
-        options: ["A client", "A host", "A router", "A web server"],
-        correct: "A client",
-    },
-    {
-        id: "4",
-        question: "Hardware devices that are not part of the main computer system and are often added later to the system.",
-        options: ["Peripheral", "Clip art", "Highlight", "Execute"],
-        correct: "Peripheral",
-    },
-    {
-        id: "5",
-        question: "The main computer that stores the files that can be sent to computers that are networked together is:",
-        options: ["Clip art", "Mother board", "Peripheral", "File server"],
-        correct: "File server",
-    }, {
-        id: "6",
-        question: "How can you catch a computer virus?",
-        options: ["Sending e-mail messages", "Using a laptop during the winter", "Opening e-mail attachments", "Shopping on-line"],
-        correct: "Opening e-mail attachments",
-    },
-    {
-        id: "7",
-        question: "Google (www.google.com) is a:",
-        options: ["Search Engine", "Number in Math", "Directory of images", "Chat service on the web"],
-        correct: "Search Engine",
-    },
-    {
-        id: "8",
-        question: "Which is not an Internet protocol?",
-        options: ["HTTP", "FTP", "STP", "IP"],
-        correct: "STP",
-    },
-    {
-        id: "9",
-        question: "Which of the following is not a valid domain name?",
-        options: ["www.yahoo.com", "www.yahoo.co.uk", "www.com.yahoo", "www.yahoo.co.in"],
-        correct: "www.com.yahoo",
-    },
-];
+
+let quizArray = [];
+$(document).ready(function () {
+    $.ajax({
+        url: 'http://localhost:8080/Student/quizdisplay?quizid=1',
+        method: 'GET',
+        context: document.body,
+        success: function (responseText) {
+            if (responseText) {
+                quizArray = JSON.parse(responseText);
+                console.log(JSON.parse(responseText))
+            }
+        }
+    });
+});
 
 //Restart Quiz
 restart.addEventListener("click", () => {
@@ -87,30 +41,30 @@ restart.addEventListener("click", () => {
 
 //Next Button
 nextBtn.addEventListener(
-    "click",
-    (displayNext = () => {
-        //increment questionCount
-        questionCount += 1;
-        //if last question
-        if (questionCount == quizArray.length) {
-            //hide question container and display score
-            displayContainer.classList.add("hide");
-            scoreContainer.classList.remove("hide");
-            //user score
-            userScore.innerHTML =
-                "Your score is " + scoreCount + " out of " + questionCount;
-        } else {
-            //display questionCount
-            countOfQuestion.innerHTML =
-                questionCount + 1 + " of " + quizArray.length + " Question";
-            //display quiz
-            quizDisplay(questionCount);
-            count = 11;
-            clearInterval(countdown);
-            timerDisplay();
-        }
-    })
-);
+        "click",
+        (displayNext = () => {
+            //increment questionCount
+            questionCount += 1;
+            //if last question
+            if (questionCount == quizArray.length) {
+                //hide question container and display score
+                displayContainer.classList.add("hide");
+                scoreContainer.classList.remove("hide");
+                //user score
+                userScore.innerHTML =
+                        "Your score is " + scoreCount + " out of " + questionCount;
+            } else {
+                //display questionCount
+                countOfQuestion.innerHTML =
+                        questionCount + 1 + " of " + quizArray.length + " Question";
+                //display quiz
+                quizDisplay(questionCount);
+                count = 11;
+                clearInterval(countdown);
+                timerDisplay();
+            }
+        })
+        );
 
 //Back button
 // var closeButton = document.getElementById("closeButton");
@@ -138,7 +92,10 @@ const quizDisplay = (questionCount) => {
         card.classList.add("hide");
     });
     //display current question card
-    quizCards[questionCount].classList.remove("hide");
+    if (quizCards[questionCount]) {
+        quizCards[questionCount].classList.remove("hide");
+    }
+
 };
 
 //Quiz Creation
@@ -148,7 +105,7 @@ function quizCreator() {
     //generate quiz
     for (let i of quizArray) {
         //randomly sort options
-        i.options.sort(() => Math.random() - 0.5);
+        i.listAnswer.sort(() => Math.random() - 0.5);
         //quiz card creation
         let div = document.createElement("div");
         div.classList.add("container-mid", "hide");
@@ -157,15 +114,10 @@ function quizCreator() {
         //question
         let question_DIV = document.createElement("p");
         question_DIV.classList.add("question");
-        question_DIV.innerHTML = i.question;
+        question_DIV.innerHTML = i.content;
         div.appendChild(question_DIV);
         //options
-        div.innerHTML += `
-        <button class="option-div" onclick="checker(this)">${i.options[0]}</button>
-        <button class="option-div" onclick="checker(this)">${i.options[1]}</button>
-        <button class="option-div" onclick="checker(this)">${i.options[2]}</button>
-        <button class="option-div" onclick="checker(this)">${i.options[3]}</button>
-        `;
+        div.innerHTML += i.listAnswer.map((answer) => `<button class="option-div" onclick="checker(this)">${answer.content}</button>`);
         quizContainer.appendChild(div);
     }
 }
@@ -174,7 +126,7 @@ function quizCreator() {
 function checker(userOption) {
     let userSolution = userOption.innerText;
     let question =
-        document.getElementsByClassName("container-mid")[questionCount];
+            document.getElementsByClassName("container-mid")[questionCount];
     let options = question.querySelectorAll(".option-div");
 
     //if user clicked answer == correct option stored in object
