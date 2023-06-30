@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * @author Thaycacac
  */
 public class AnswerDAO extends DBContext {
+
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -24,13 +25,13 @@ public class AnswerDAO extends DBContext {
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setInt(1,questionId);
+            ps.setInt(1, questionId);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt(1);
-                String contet = rs.getString(2);                           
+                String content = rs.getString(2);
                 boolean isCorrectAnswer = rs.getBoolean(3);
-                Answer ans = new Answer(id, questionId, contet, isCorrectAnswer);
+                Answer ans = new Answer(id, questionId, content, isCorrectAnswer);
                 listAnswer.add(ans);
             }
             return listAnswer;
@@ -39,18 +40,18 @@ public class AnswerDAO extends DBContext {
         }
         return null;
     }
-    
+
     public ArrayList<Answer> getCorrectAnswer(int questionId) {
         ArrayList<Answer> listAnswer = new ArrayList<>();
         String query = "SELECT * FROM Answer WHERE questionID = ? and isCorrectAnswer = 1";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setInt(1,questionId);
+            ps.setInt(1, questionId);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt(1);
-                String contet = rs.getString(2);                           
+                String contet = rs.getString(2);
                 boolean isCorrectAnswer = rs.getBoolean(3);
                 Answer ans = new Answer(id, questionId, contet, isCorrectAnswer);
                 listAnswer.add(ans);
@@ -61,14 +62,15 @@ public class AnswerDAO extends DBContext {
         }
         return null;
     }
-    
+
     public static void main(String[] args) {
         AnswerDAO dao = new AnswerDAO();
-        ArrayList<Answer> list = dao.getListAnswer(1);
-        System.out.println(list);
+//        ArrayList<Answer> list = dao.getListAnswer(1);
+//        System.out.println(list);
 
 //        ArrayList<Answer> list = dao.getCorrectAnswer(1);
 //        System.out.println(list);
+
+        
     }
 }
-

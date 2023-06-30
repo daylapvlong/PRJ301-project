@@ -130,14 +130,14 @@ function checker(userOption) {
     let options = question.querySelectorAll(".option-div");
 
     //if user clicked answer == correct option stored in object
-    if (userSolution === quizArray[questionCount].correct) {
+    if (userSolution == quizArray[questionCount].isCorrectAnswer.some(option => option.content === userSolution && option.isCorrectAnswer)) {
         userOption.classList.add("correct");
         scoreCount++;
     } else {
         userOption.classList.add("incorrect");
         //For marking the correct option
         options.forEach((element) => {
-            if (element.innerText == quizArray[questionCount].correct) {
+            if (element.innerText == quizArray[questionCount].isCorrectAnswer.some(option => option.content === userSolution && option.isCorrectAnswer)) {
                 element.classList.add("correct");
             }
         });
