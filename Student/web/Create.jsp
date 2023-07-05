@@ -7,45 +7,46 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Create Quiz</title>
+            <link href="css/Create.css" rel="stylesheet" />
         </head>
 
         <body>
-            <div class="createContainer">
-                <form method="post" action="">
-                    <div id="createTable">
-                        <div>
-                            <label for="question">Question:</label>
-                            <input type="text" name="question"></textarea>
-                        </div>
-                        <div id="createAnswer">
-                            <label for="option">Option:</label>
-                            <input type="text" name="option" />
-                            <input type="radio" name="isCorrect">
-                        </div>
-                        <button type="button" class="btn-copy" onclick="duplicateAnswer()">New Answer</button>
-                    </div>
-                    
-                    <button type="button" class="btn-copy" onclick="duplicateQuestion()">New Question</button>
-                    <button type="submit">Create Quiz</button>
-                </form>
+            <div class="close-container" id="closeButton" onclick="history.back()">
+                <div class="leftright"></div>
+                <div class="rightleft"></div>
             </div>
-            
-            <script>
-                function duplicateQuestion() {
-                    const node = document.getElementById("createTable");
-                    const clone = node.cloneNode(true);
-                    document.getElementById("createTable").appendChild(clone);
-                }
 
-                function duplicateAnswer() {
-                    const node = document.getElementById("createAnswer");
-                    const clone = node.cloneNode(true);
-                    document.getElementById("createAnswer").appendChild(clone);
-                }
-            </script>
+            <div class="createContainer">
+                <div class="createContainer_heading">
+                    <h1>Create your quiz</h1>
+                </div>
 
-            <!-- <script src="js/create.js"></script> -->
+                <div class="formWrapper" id="wrapper">
+                    <form class="createForm" method="post" action="create" id="form">
+                        <div id="createTable">
+                            <div class="formQuestion">
+                                <input class="input" type="text" name="question" placeholder="Question"></textarea>
+                            </div>
+                            <div class="formAnswer">
+                                <input class="input" type="text" name="option" placeholder="Option" />
+                                <input class="radio" type="radio" name="radio" name="isCorrect">
+                            </div>
+                            <div class="formAnswer" id="createAnswer">
+                                <input class="input" type="text" name="option" placeholder="Option" />
+                                <input class="radio" type="radio" name="isCorrect">
+                            </div>
+                            <button type="button" id='btn-copy' class="btn-copy" onclick="duplicateAnswer()">New
+                                Answer</button>
+                            <button type="button" id='btn-copy' class="btn-copy" onclick="duplicateQuestion()">New
+                                Question</button>
+                        </div>
 
+                        <button type="submit" class="btn-submit">Create Quiz</button>
+                    </form>
+                </div>
+            </div>
+
+            <script src="js/create.js"></script>
 
         </body>
 
