@@ -11,14 +11,16 @@ public class Question {
     private int questionId;
     private String content;
     ArrayList<Answer> listAnswer;
+    ArrayList<Answer> isCorrectAnswer;
 
     public Question() {
     }
 
-    public Question(int questionId, String content, ArrayList<Answer> listAnswer) {
+    public Question(int questionId, String content, ArrayList<Answer> listAnswer, ArrayList<Answer> isCorrectAnswer) {
         this.questionId = questionId;
         this.content = content;
         this.listAnswer = listAnswer;
+        this.isCorrectAnswer = isCorrectAnswer;
     }
 
     public int getQuestionId() {
@@ -45,9 +47,17 @@ public class Question {
         this.listAnswer = listAnswer;
     }
 
+    public ArrayList<Answer> isIsCorrectAnswer() {
+        return isCorrectAnswer;
+    }
+
+    public void setIsCorrectAnswer(ArrayList<Answer> isCorrectAnswer) {
+        this.isCorrectAnswer = isCorrectAnswer;
+    }
+
     @Override
     public String toString() {
-        return "Question{" + "questionId=" + questionId + ", content=" + content + ", listAnswer=" + listAnswer + '}';
+        return "Question{" + "questionId=" + questionId + ", content=" + content + ", listAnswer=" + listAnswer + ", corectAnswer=" + isCorrectAnswer + '}';
     }
 
 }

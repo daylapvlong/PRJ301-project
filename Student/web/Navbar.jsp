@@ -15,7 +15,7 @@
             <a class="navbar_icon" href="WelcomePage.jsp">Home</a>
             <a class="navbar_icon" href="#about">About us</a>
             <a class="navbar_icon" href="${sessionScope.acc == null ? 'Login.jsp' : 'home'}">Courses</a>
-            <a class="navbar_icon" href="#">Create a quiz</a>
+            <a class="navbar_icon" href="${sessionScope.acc == null ? 'Login.jsp' : 'Create.jsp'}">Create a quiz</a>
         </div>
 
         <div class="navbar_right">
