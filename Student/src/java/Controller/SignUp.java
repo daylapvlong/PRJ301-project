@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
 /**
  *
  * @author admin's
@@ -38,28 +37,69 @@ public class SignUp extends HttpServlet {
             String mail = request.getParameter("email");
             String pass = request.getParameter("password");
             String re_pass = request.getParameter("re_pass");
-            
-            if(!pass.equals(re_pass)){
+            String radio = request.getParameter("radiogroup");
+            String checkbox = request.getParameter("agree-term");
+
+            if (name == null) {
+                //check name box if is empty
+                request.setAttribute("namemess", "<div class=\"alert\">\n"
+                        + "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "                                                           Please <strong>fill in</strong> the name box.\n"
+                        + "                                                       </div>");
+                request.getRequestDispatcher("SignUp.jsp").forward(request, response);
+            } else if (mail == null) {
+                //check name box if is empty
+                request.setAttribute("mailmess", "<div class=\"alert\">\n"
+                        + "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "                                                           Please <strong>fill in</strong> the mail box.\n"
+                        + "                                                       </div>");
+                request.getRequestDispatcher("SignUp.jsp").forward(request, response);
+            } else if (checkbox == null) {
+                //tick terms of agreement
+                request.setAttribute("checkmess", "<div class=\"alert\">\n"
+                        + "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "                                                           Please <strong>agree</strong> with our terms\n"
+                        + "                                                       </div>");
+                request.getRequestDispatcher("SignUp.jsp").forward(request, response);
+            } else if (radio == null) {
+                //tick terms of agreement
+                request.setAttribute("radiomess", "<div class=\"alert\">\n"
+                        + "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "                                                           Please <strong>Select</strong> your position\n"
+                        + "                                                       </div>");
+                request.getRequestDispatcher("SignUp.jsp").forward(request, response);
+            } else if (!pass.equals(re_pass)) {
                 //check pass va repass cp trung nhau k?
-                request.setAttribute("passmess", "<div class=\"alert\">\n" +
-"                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n" +
-"                                                           <strong>Password dont match!</strong> Please try again.\n" +
-"                                                       </div>");
-                request.getRequestDispatcher("SignUp.jsp").forward(request,response);
+                request.setAttribute("passmess", "<div class=\"alert\">\n"
+                        + "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "                                                           <strong>Password dont match!</strong> Please try again.\n"
+                        + "                                                       </div>");
+                request.getRequestDispatcher("SignUp.jsp").forward(request, response);
             } else {
                 SignUpDAO signup = new SignUpDAO();
                 Account a = signup.checkAccountExist(mail);
-                if(a==null){
+                if (a == null) {
                     //dc signup
-                    signup.signup(name, mail, pass);
-                    response.sendRedirect("Login.jsp");
+                    if (radio.equals("0")) {
+                        // User selected "student"
+                        // Perform student registration logic here
+                        // Redirect or forward to student registration page
+                        signup.signup(name, mail, pass, radio);
+                        response.sendRedirect("Login.jsp");
+                    } else {
+                        // User selected "teacher"
+                        // Perform teacher registration logic here
+                        // Redirect or forward to teacher registration page
+                        signup.signup(name, mail, pass, radio);
+                        response.sendRedirect("LoginTeacher.jsp");
+                    }
                 } else {
                     //quay lai signup
-                    request.setAttribute("namemess", "<div class=\"alert\">\n" +
-"                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n" +
-"                                                           <strong>Email existed!</strong> Please try again.\n" +
-"                                                       </div>");
-                     request.getRequestDispatcher("SignUp.jsp").forward(request,response);
+                    request.setAttribute("existedmess", "<div class=\"alert\">\n"
+                                        + "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                                        + "<strong>Email existed!</strong> Please try again.\n"
+                                        + "</div>");
+                    request.getRequestDispatcher("SignUp.jsp").forward(request, response);
                 }
             }
         }

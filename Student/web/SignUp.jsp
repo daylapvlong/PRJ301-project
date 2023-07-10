@@ -31,6 +31,22 @@
                                 ${namemess}
                             </div>
                             
+                            <div>
+                                ${checkmess}
+                            </div>
+                            
+                            <div>
+                                ${mailmess}
+                            </div>
+                            
+                            <div>
+                                ${radiomess}
+                            </div>
+                            
+                            <div>
+                                ${existedmess}
+                            </div>
+                            
                             <form method="post" action="signup" class="register-form" id="register-form">
 
                                 <div class="form-group">
@@ -69,10 +85,10 @@
                                  <div class="radio_option">
                                     <p>Are your a Student or a Teacher?</p>
                                     <div class="radio_option">
-                                        <input type="radio" name="radiogroup1" id="rd1">
+                                        <input type="radio" name="radiogroup" id="rd1" value="0">
                                         <label class="radio_label" for="rd1">Student</label>
                                 
-                                        <input type="radio" name="radiogroup1" id="rd2">
+                                        <input type="radio" name="radiogroup" id="rd2" value ="1">
                                         <label class="radio_label" for="rd2">Teacher</label>
                                     </div>
                                 </div> 
