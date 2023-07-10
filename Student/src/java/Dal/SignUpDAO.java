@@ -41,14 +41,15 @@ public class SignUpDAO extends DBContext {
         return null;
     }
     
-    public void signup(String name, String mail, String pass){
-        String query= "insert into Account(name, email, password, isStudent, isTeacher) values(?,?,?,0,0)";
+    public void signup(String name, String mail, String pass, String checkTeacher){
+        String query= "insert into Account(name, email, password, isStudent, isTeacher) values(?,?,?,0,?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, name);
             ps.setString(2, mail);
             ps.setString(3, pass);
+            ps.setString(4,checkTeacher);
             ps.executeUpdate();
         } catch(Exception e) {
             System.out.println(e);
