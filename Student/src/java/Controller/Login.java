@@ -62,9 +62,8 @@ public class Login extends HttpServlet {
                     request.getRequestDispatcher("Login.jsp").forward(request,response);
                 } else {                    
                     // Store user information in session
-                    Account acc = new Account();
                     HttpSession session = request.getSession();
-                    if (acc.getIsTeacher() == UserRole.ADMIN.getValue()) {                       
+                    if (a.getIsTeacher() == UserRole.ADMIN.getValue()) {                       
                         session.removeAttribute("role");
                         session.setAttribute("role", UserRole.ADMIN.getValue());
                         session.setAttribute("acc", a);

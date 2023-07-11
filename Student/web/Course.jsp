@@ -117,7 +117,7 @@
                                             ${o.timeLimit}
                                         </td>
                                         <c:choose>
-                                            <c:when test="${Account.getIsTeacher eq '1'}">
+                                            <c:when test="${sessionScope.role eq '1'}">
                                                 <td class="px-6 py-4">
                                                     <a href="QuizUpdate.jsp" class="startbtn">Update</a>
                                                 </td>
