@@ -30,7 +30,7 @@
                         <div id="container">
 
                             <div class="container-mid">
-                                <input class="question" name="question" value="What is my girlfriend's name?">
+                                <input class="option-div" name="question" value="What is my girlfriend's name?">
                                 <div class="formAnswer">
                                     <input class="option-div" name="answer" value="Nga">
                                     <input class="radio" type="radio" name="radio" name="isCorrect">

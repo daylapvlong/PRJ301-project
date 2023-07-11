@@ -20,7 +20,7 @@ let countdown;
 let quizArray = [];
 $(document).ready(function () {
     $.ajax({
-        url: 'http://localhost:8080/Student/quizdisplay?quizid=1',
+        url: 'http://localhost:8080/Student/quizdisplay',
         method: 'GET',
         context: document.body,
         success: function (responseText) {

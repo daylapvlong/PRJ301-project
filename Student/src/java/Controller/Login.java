@@ -70,6 +70,8 @@ public class Login extends HttpServlet {
                         session.setAttribute("name", a.getName());
                         response.sendRedirect("home");
                     } else {
+                        session.removeAttribute("role");
+                        session.setAttribute("role", UserRole.USER.getValue());
                         session.setAttribute("acc", a);
                         session.setAttribute("name", a.getName());
                         response.sendRedirect("home");
