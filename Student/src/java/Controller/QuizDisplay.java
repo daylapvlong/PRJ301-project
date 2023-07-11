@@ -26,22 +26,27 @@ import java.util.ArrayList;
  */
 @WebServlet(name = "QuizDisplay", urlPatterns = {"/quizdisplay"})
 public class QuizDisplay extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String quizId = request.getParameter("quizid");
-        int quzId = Integer.parseInt(request.getParameter("quizid"));
-        
+        String quizId = request.getParameter("quiztuntid");
+        int quzId = 1;
+
+        if (quizId != null && !quizId.isEmpty()) {
+            quzId = Integer.parseInt(quizId);
+        }
+
         CourseDAO cdao = new CourseDAO();
         QuestionDAO qdao = new QuestionDAO();
-        
+
         Quiz quiz = cdao.getQuizById(quizId);
         ArrayList<Question> listQuestion = qdao.getListQuestion(1);
 
-        Object res = new Object(){
+        Object res = new Object() {
             ArrayList<Question> questions = listQuestion;
         };
-        
+
         Gson gson = new Gson();
         response.getWriter().write(gson.toJson(listQuestion));
     }
