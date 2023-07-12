@@ -86,8 +86,12 @@ public class ChangeCourse extends HttpServlet {
         String semester = request.getParameter("semester");
         
         ChangeDAO dao = new ChangeDAO();
+//        CourseDAO cdao = new CourseDAO();
+        
         dao.updateCourse(courseId, name, description, semester);
         response.sendRedirect("home");
+        
+        System.out.println(courseId);
     }
 
     /**

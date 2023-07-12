@@ -8,6 +8,7 @@
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
                 <title>JSP Page</title>
                 <link rel="stylesheet" href="css/Course.css">
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
                     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
                     crossorigin="anonymous">
@@ -35,53 +36,64 @@
                             </c:otherwise>
                         </c:choose>
 
-                        <div class="course_filter col-sm-5">
+                        <c:choose>
+                            <c:when test="${sessionScope.role eq '1'}">
+                                <div class="course_filter col-sm-7">
+                                    <div class="enter_code_container_admin">
+                                        <div class="inner-form">
+                                            <form class="enter_code_form" action="searchCourse" method="post">
+                                                <input name="txt" class="enter_code_input" id="choices-text-preset-values"
+                                                    type="text" placeholder="Enter quiz code..." />
+                                                <button class="enter_code_button" type="submit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
 
-                            <div class="enter_code_container">
-                                <div class="inner-form">
-                                    <form class="enter_code_form" action="searchCourse" method="post">
-                                        <input name="txt" class="enter_code_input" id="choices-text-preset-values"
-                                            type="text" placeholder="Enter quiz code..." />
-                                        <button class="enter_code_button" type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
-                                                </path>
-                                            </svg>
-                                        </button>
-                                    </form>
+                                    <a class="delete-btn" href="#">
+                                        <i class="material-icons" style="font-size:36px">delete</i>
+                                        <span class="popuptext">Delete this course?</span>
+                                    </a>
+
                                 </div>
-                            </div>
-
-                            <!-- <div class="course_filter_status">
-                                <div class="dropdown">
-                                    <button onclick="myFunction()" class="dropbtn">Quiz status</button>
-                                    <div id="myDropdown" class="dropdown-content">
-                                        <a href="#" class="active">All quiz</a>
-                                        <a href="#">Not started</a>
-                                        <a href="#">In progress</a>
-                                        <a href="#">Completed</a>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="course_filter col-sm-5">
+                                    <div class="enter_code_container">
+                                        <div class="inner-form">
+                                            <form class="enter_code_form" action="searchCourse" method="post">
+                                                <input name="txt" class="enter_code_input" id="choices-text-preset-values"
+                                                    type="text" placeholder="Enter quiz code..." />
+                                                <button class="enter_code_button" type="submit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div> -->
-
-                            <!-- <c:choose>
-                                <c:when test="${Account.getIsTeacher eq '1'}">
-                                    <td class="px-6 py-4">
-                                        <a href="QuizUpdate.jsp" class="startbtn">Update</a>
-                                    </td>
-                                </c:when>
-                                <c:otherwise>
-                                    <td class="px-6 py-4">
-                                        <a href="quiz?quizid=${o.quizId}" class="startbtn">Start</a>
-                                    </td>
-                                </c:otherwise>
-                            </c:choose> -->
-
-                        </div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
 
+                    <c:choose>
+                        <c:when test="${sessionScope.role eq '1'}">
+                            <div class="create">
+                                <a class="create-btn" href="Create.jsp">Create
+                                    quiz</a>
+                            </div>
+                        </c:when>
+                    </c:choose>
                     <div class="quiz_table">
                         <table class="quiz_table_content">
                             <thead class="quiz_table_header">
