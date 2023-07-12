@@ -29,7 +29,7 @@
             <div class="limiter">
                 <div class="container-update100">
                     <div class="wrap-update100">
-                        <form action="changeAccount" method="post" class="update100-form validate-form">
+                        <form action="changeCourse" method="post" class="update100-form validate-form">
                             <div class="form-header">
                                 <div class="close-container" onclick="history.back()">
                                     <div class="leftright"></div>

@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Dal.ChangeDAO;
 import Dal.CourseDAO;
 import Model.Course;
 import java.io.IOException;
@@ -79,7 +80,14 @@ public class ChangeCourse extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String courseId = request.getParameter("courseid");
+        String name = request.getParameter("courseName");
+        String description = request.getParameter("description");
+        String semester = request.getParameter("semester");
+        
+        ChangeDAO dao = new ChangeDAO();
+        dao.updateCourse(courseId, name, description, semester);
+        response.sendRedirect("home");
     }
 
     /**

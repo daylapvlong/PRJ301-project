@@ -124,6 +124,27 @@ public class ChangeDAO extends DBContext {
             System.out.println(e);
         }
     }
+    
+        public void updateCourse(String CourseId, String name, String description, String categoryId) {
+        String query = "update Course \n" +
+                        "set courseName = ?,\n" +
+                        "description = ?, \n" +
+                        "categoryId = ? \n" +
+                        "where courseId = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setString(2, description);
+            ps.setString(3, categoryId);
+            ps.setString(4, CourseId);
+            int rowsAffected = ps.executeUpdate(); // Use executeUpdate instead of executeQuery
+            System.out.println(rowsAffected + " row(s) updated successfully.");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 
     public void updateQuestion(String content, int id) {
         String query = "Update Question\n"
@@ -189,8 +210,15 @@ public class ChangeDAO extends DBContext {
 //            String newEmail = "johny.doe@example.com"; 
 //            String newPassword = "newpassword"; 
 //            dao.updateAccount(accountId, newName, newEmail, newPassword);
-        String email = "nyexample@gmail.com";
-        int c = dao.getAccountIDByEmail(email);
-        System.out.println(c);
+
+//        String email = "nyexample@gmail.com";
+//        int c = dao.getAccountIDByEmail(email);
+//        System.out.println(c);
+
+//        String courseid = "32";
+//        String coursename = "MATH102";
+//        String desc = "math but updated";
+//        String cateid = "1";
+//        dao.updateCourse(courseid, coursename, desc, cateid);
     }
 }

@@ -70,9 +70,7 @@ public class ChangeAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        boolean redirectToHome = true;
-        boolean redirectToCategory = true;
-        boolean redirectToSearch = true;
+ 
         int accountId = -1;
         String accountName = request.getParameter("name");
         String accountEmail = request.getParameter("email");
@@ -87,15 +85,8 @@ public class ChangeAccount extends HttpServlet {
                 accountId = dao.getAccountIDByEmail(cookie.getValue());
             }
         }
-        
         dao.updateAccount(accountId, accountName, accountEmail, accountPassword);
-        if (redirectToHome) {
-            response.sendRedirect("home");
-        } else if (redirectToCategory) {
-            response.sendRedirect("category");
-        } else if (redirectToSearch) {
-            response.sendRedirect("search");
-        }
+        response.sendRedirect("home");
     }
 
     /**

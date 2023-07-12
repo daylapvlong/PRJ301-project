@@ -38,7 +38,7 @@ public class CourseCtrl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String courseId = request.getParameter("courseid");
-        String cid = request.getParameter("courseid");      
+        String cid = request.getParameter("courseid");   
         
         HomeDAO dao = new HomeDAO();
         CourseDAO cdao = new CourseDAO();
