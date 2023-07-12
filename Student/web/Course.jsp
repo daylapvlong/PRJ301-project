@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
 
-                                    <a class="delete-btn" href="#">
+                                    <a class="delete-btn" href="deleteCourse?courseid=${course.courseId}">
                                         <i class="material-icons" style="font-size:36px">delete</i>
                                         <span class="popuptext">Delete this course?</span>
                                     </a>

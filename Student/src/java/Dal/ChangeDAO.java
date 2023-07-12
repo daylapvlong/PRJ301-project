@@ -125,12 +125,12 @@ public class ChangeDAO extends DBContext {
         }
     }
     
-        public void updateCourse(String CourseId, String name, String description, String categoryId) {
-        String query = "update Course \n" +
-                        "set courseName = ?,\n" +
-                        "description = ?, \n" +
-                        "categoryId = ? \n" +
-                        "where courseId = ?";
+    public void updateCourse(String CourseId, String name, String description, String categoryId) {
+        String query = "update Course \n"
+                + "set courseName = ?,\n"
+                + "description = ?, \n"
+                + "categoryId = ? \n"
+                + "where courseId = ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -195,9 +195,25 @@ public class ChangeDAO extends DBContext {
         }
         return 0;
     }
+ 
+    public void deleteCourse(String courseId) {
+        String query = "delete from Course\n"
+                        + "where courseId = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, courseId);
+            ps.executeUpdate();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+    }
 
     public static void main(String[] args) {
         ChangeDAO dao = new ChangeDAO();
+        String cid = "30";
+        dao.deleteCourse(cid);
+        
 //        String id = "1";
 //        Account c = dao.getAccountById(id);
 //        System.out.println(c);
