@@ -42,27 +42,28 @@
 
                             <p class="form-heading">Enter your course name: </p>
                             <div class="wrap-input100 validate-input">
-                                <input class="input100" type="text" name="courseName" id="name""
+                                <input class="input100" type="text" name="courseName" id="name" value="${c_update.courseName}"
                                     required>
                             </div>
 
                             <p class="form-heading">Write a description: </p>
                             <div class="wrap-input100 validate-input">
-                                <input class="input100" type="text" name="description" id="description"
+                                <input class="input100" type="text" name="description" id="description" value="${c_update.description}"
                                     required>
                             </div>
 
                             <p class="form-heading">Select semester: </p>
                             <div class="wrap-input100">
-                                <input type="radio" value="1" name="semester">
+                                <input type="radio" value="1" name="semester" ${c_update.categoryId == 1? "checked" : ""}>
                                 <label for="semester1">Semester 1</label>
-                                <input type="radio" value="2" name="semester">
+                                <input type="radio" value="2" name="semester" ${c_update.categoryId == 2? "checked" : ""}>
                                 <label for="semester2">Semester 2</label>
-                                <input type="radio" value="3" name="semester">
+                                <input type="radio" value="3" name="semester" ${c_update.categoryId == 3? "checked" : ""}>
                                 <label for="semester3">Semester 3</label>
-                                <input type="radio" value="4" name="semester">
+                                <input type="radio" value="4" name="semester" ${c_update.categoryId == 4? "checked" : ""}>
                                 <label for="semester4">Semester 4</label>
                             </div>
+
                             <div class="container-update100-form-btn">
                                 <button class="update100-form-btn" type="submit">Update Course</button>
                             </div>

@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpSession;
  * @author admin's
  */
 @WebServlet(name = "changePassword", urlPatterns = {"/change"})
-public class changePassword extends HttpServlet {
+public class ChangePassword extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

@@ -50,16 +50,16 @@ public class SignUp extends HttpServlet {
             } else if (radio == null) {
                 //tick terms of agreement
                 request.setAttribute("radiomess", "<div class=\"alert\">\n"
-                        + "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
-                        + "                                                           Please <strong>Select</strong> your position\n"
-                        + "                                                       </div>");
+                        + "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "Please <strong>Select</strong> your position\n"
+                        + "</div>");
                 request.getRequestDispatcher("SignUp.jsp").forward(request, response);
             } else if (!pass.equals(re_pass)) {
                 //check pass va repass cp trung nhau k?
                 request.setAttribute("passmess", "<div class=\"alert\">\n"
-                        + "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
-                        + "                                                           <strong>Password dont match!</strong> Please try again.\n"
-                        + "                                                       </div>");
+                        + "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "<strong>Password dont match!</strong> Please try again.\n"
+                        + "</div>");
                 request.getRequestDispatcher("SignUp.jsp").forward(request, response);
             } else {
                 SignUpDAO signup = new SignUpDAO();

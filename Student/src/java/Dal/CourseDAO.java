@@ -41,6 +41,26 @@ public class CourseDAO extends DBContext {
         return 0;
     }
     
+    public Course getCourseById(String id) {
+        String query = "select * from Course\n"
+                + "where courseId = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Course(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
     public int getCourseId(String cid) {
         String query = "select courseId from Course \n"
                 + "where courseId = ?";
@@ -179,9 +199,14 @@ public class CourseDAO extends DBContext {
     
     public static void main(String[] args) {
         CourseDAO dao = new CourseDAO();
-        String name = "MAE101";
-        Course c = dao.checkCourseExisted(name);
-        System.out.println(c);
+//        String name = "MAE101";
+//        Course c = dao.checkCourseExisted(name);
+//        System.out.println(c);
+//        
+//        String cid = "1";
+//        Course c =dao.getCourseById(cid);
+//        System.out.println(c);
+
 //        String cid = "1";
 //        List<Quiz> list = dao.getAllQuiz(cid);
 //        for (Quiz o : list) {
