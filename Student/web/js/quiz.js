@@ -20,7 +20,7 @@ let countdown;
 let quizArray = [];
 $(document).ready(function () {
     $.ajax({
-        url: 'http://localhost:8080/Student/quizdisplay?quizid=1',
+        url: 'http://localhost:8080/Student/quizdisplay',
         method: 'GET',
         context: document.body,
         success: function (responseText) {
@@ -41,36 +41,30 @@ restart.addEventListener("click", () => {
 
 //Next Button
 nextBtn.addEventListener(
-        "click",
-        (displayNext = () => {
-            //increment questionCount
-            questionCount += 1;
-            //if last question
-            if (questionCount == quizArray.length) {
-                //hide question container and display score
-                displayContainer.classList.add("hide");
-                scoreContainer.classList.remove("hide");
-                //user score
-                userScore.innerHTML =
-                        "Your score is " + scoreCount + " out of " + questionCount;
-            } else {
-                //display questionCount
-                countOfQuestion.innerHTML =
-                        questionCount + 1 + " of " + quizArray.length + " Question";
-                //display quiz
-                quizDisplay(questionCount);
-                count = 11;
-                clearInterval(countdown);
-                timerDisplay();
-            }
-        })
-        );
-
-//Back button
-// var closeButton = document.getElementById("closeButton");
-//     closeButton.addEventListener("click", function () {
-//         window.location.href = "course";
-//     });
+    "click",
+    (displayNext = () => {
+        //increment questionCount
+        questionCount += 1;
+        //if last question
+        if (questionCount == quizArray.length) {
+            //hide question container and display score
+            displayContainer.classList.add("hide");
+            scoreContainer.classList.remove("hide");
+            //user score
+            userScore.innerHTML =
+                "Your score is " + scoreCount + " out of " + questionCount;
+        } else {
+            //display questionCount
+            countOfQuestion.innerHTML =
+                questionCount + 1 + " of " + quizArray.length + " Question";
+            //display quiz
+            quizDisplay(questionCount);
+            count = 11;
+            clearInterval(countdown);
+            timerDisplay();
+        }
+    })
+);
 
 //Timer
 const timerDisplay = () => {
@@ -117,30 +111,39 @@ function quizCreator() {
         question_DIV.innerHTML = i.content;
         div.appendChild(question_DIV);
         //options
-        div.innerHTML += i.listAnswer.map((answer) => `<button class="option-div" onclick="checker(this)">${answer.content}</button>`);
+        i.listAnswer.forEach((answer) => {
+            const button = document.createElement("button");
+            button.className = "option-div";
+            button.textContent = answer.content;
+            button.onclick = () => checker(answer);
+
+            div.appendChild(button);
+        });
+
         quizContainer.appendChild(div);
     }
 }
 
 //Checker Function to check if option is correct or not
 function checker(userOption) {
-    let userSolution = userOption.innerText;
-    let question =
-            document.getElementsByClassName("container-mid")[questionCount];
+    let userSolution = userOption.id; 
+    let question = document.getElementsByClassName("container-mid")[questionCount];
     let options = question.querySelectorAll(".option-div");
 
-    //if user clicked answer == correct option stored in object
-    if (userSolution == quizArray[questionCount].isCorrectAnswer.some(option => option.content === userSolution && option.isCorrectAnswer)) {
-        userOption.classList.add("correct");
+    // if user clicked answer == correct option stored in object
+    if (userSolution == quizArray[questionCount].isCorrectAnswer[0].id) {
+        // userOption.classList.add("correct");
         scoreCount++;
+        console.log("correct");
     } else {
         userOption.classList.add("incorrect");
-        //For marking the correct option
+        // For marking the correct option
         options.forEach((element) => {
-            if (element.innerText == quizArray[questionCount].isCorrectAnswer.some(option => option.content === userSolution && option.isCorrectAnswer)) {
+            if (element.id == quizArray[questionCount].isCorrectAnswer[0].id) {  
                 element.classList.add("correct");
             }
         });
+        console.log("incorrect");
     }
 
     //clear interval(stop timer)

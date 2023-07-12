@@ -4,12 +4,6 @@
  */
 package Controller;
 
-import Dal.ChangeDAO;
-import Dal.HomeDAO;
-import Dal.LoginDAO;
-import Model.Account;
-import Model.Category;
-import Model.Course;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -17,17 +11,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Set;
-import utils.NumberToEnum;
 
 /**
  *
  * @author admin's
  */
-@WebServlet(name = "Home", urlPatterns = {"/home"})
-public class Home extends HttpServlet {
+@WebServlet(name = "ChangeQuiz", urlPatterns = {"/changeQuiz"})
+public class ChangeQuiz extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,40 +31,18 @@ public class Home extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String indexPage = request.getParameter("index");
-        int index;
-        if (indexPage != null && !indexPage.isEmpty()) {
-            try {
-                index = Integer.parseInt(indexPage);
-            } catch (NumberFormatException e) {
-                // Handle the case when indexPage is not a valid integer
-                // Set a default value or show an error message
-                index = 1; // Default value, you can change it as needed
-            }
-        } else {
-            index = 1; // Default value, you can change it as needed
+        try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ChangeQuiz</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ChangeQuiz at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-
-        HomeDAO dao = new HomeDAO();
-        ChangeDAO changeDao = new ChangeDAO();
-        List<Account> list = changeDao.getAllAccount();
-//        List<Course> list = dao.getAllCourse();
-        List<Course> listP = dao.pagingCourse(index);
-        List<Category> listC = dao.getAllCategory();
-        int count = dao.getAllCount();
-        int endPage = count / 8;
-        if (count % 8 != 0) {
-            endPage++;
-        }
-
-        request.setAttribute("listAccount", list);
-        request.setAttribute("listPaging", listP);
-        request.setAttribute("tag", index);
-        request.setAttribute("listCategory", listC);
-        request.setAttribute("endP", endPage);
-        request.getRequestDispatcher("Home.jsp").forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -103,7 +71,12 @@ public class Home extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String question = request.getParameter("question");
+        String time = request.getParameter("time");
+        String answer = request.getParameter("answer");
+        String isCorrectAnswer = request.getParameter("radio");
+        
+        
     }
 
     /**
