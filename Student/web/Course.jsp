@@ -18,19 +18,30 @@
 
                 <div class="body_container">
                     <div class="course_container">
-                        <div class="course_details col-sm-7">
-                            <h1>${course.courseName}</h1>
-                            <h1>/</h1>
-                            <h2>${course.description}</h2>
-                        </div>
+                        <c:choose>
+                            <c:when test="${sessionScope.role eq '1'}">
+                                <a href="UpdateCourse.jsp" class="course_details col-sm-8">
+                                    <h1>${course.courseName}</h1>
+                                    <h1>/</h1>
+                                    <h2>${course.description}</h2>
+                                </a>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="course_details col-sm-8">
+                                    <h1>${course.courseName}</h1>
+                                    <h1>/</h1>
+                                    <h2>${course.description}</h2>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
 
                         <div class="course_filter col-sm-5">
 
                             <div class="enter_code_container">
                                 <div class="inner-form">
                                     <form class="enter_code_form" action="searchCourse" method="post">
-                                        <input name="txt" class="enter_code_input" id="choices-text-preset-values" type="text"
-                                            placeholder="Enter quiz code..." />
+                                        <input name="txt" class="enter_code_input" id="choices-text-preset-values"
+                                            type="text" placeholder="Enter quiz code..." />
                                         <button class="enter_code_button" type="submit">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
@@ -43,7 +54,7 @@
                                 </div>
                             </div>
 
-                            <div class="course_filter_status">
+                            <!-- <div class="course_filter_status">
                                 <div class="dropdown">
                                     <button onclick="myFunction()" class="dropbtn">Quiz status</button>
                                     <div id="myDropdown" class="dropdown-content">
@@ -53,14 +64,27 @@
                                         <a href="#">Completed</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+
+                            <!-- <c:choose>
+                                <c:when test="${Account.getIsTeacher eq '1'}">
+                                    <td class="px-6 py-4">
+                                        <a href="QuizUpdate.jsp" class="startbtn">Update</a>
+                                    </td>
+                                </c:when>
+                                <c:otherwise>
+                                    <td class="px-6 py-4">
+                                        <a href="quiz?quizid=${o.quizId}" class="startbtn">Start</a>
+                                    </td>
+                                </c:otherwise>
+                            </c:choose> -->
+
                         </div>
                     </div>
 
                     <div class="quiz_table">
                         <table class="quiz_table_content">
-                            <thead
-                                class="quiz_table_header">
+                            <thead class="quiz_table_header">
                                 <tr>
                                     <th scope="col" class="quiz_name">
                                         Quiz Name
@@ -74,9 +98,18 @@
                                     <th scope="col" class="quiz_else">
                                         Time
                                     </th>
-                                    <th scope="col" class="quiz_else">
-                                        Ready to Test?
-                                    </th>
+                                    <c:choose>
+                                        <c:when test="${sessionScope.role eq '1'}">
+                                            <th scope="col" class="quiz_else">
+                                                Update Test?
+                                            </th>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <th scope="col" class="quiz_else">
+                                                Ready to Test?
+                                            </th>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </tr>
                             </thead>
                             <tbody>
@@ -94,9 +127,18 @@
                                         <td class="px-6 py-4">
                                             ${o.timeLimit}
                                         </td>
-                                        <td class="px-6 py-4">
-                                            <a href="quiz?quizid=${o.quizId}" class="startbtn">Start</a>
-                                        </td>
+                                        <c:choose>
+                                            <c:when test="${sessionScope.role eq '1'}">
+                                                <td class="px-6 py-4">
+                                                    <a href="QuizUpdate.jsp" class="startbtn">Update</a>
+                                                </td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td class="px-6 py-4">
+                                                    <a href="quiz?quizid=${o.quizId}" class="startbtn">Start</a>
+                                                </td>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </tr>
                                 </c:forEach>
                             </tbody>
@@ -107,27 +149,7 @@
 
                 <jsp:include page="Footer.jsp"></jsp:include>
 
-                <script>
-                    /* When the user clicks on the button, 
-                     toggle between hiding and showing the dropdown content */
-                    function myFunction() {
-                        document.getElementById("myDropdown").classList.toggle("show");
-                    }
-
-                    // Close the dropdown if the user clicks outside of it
-                    window.onclick = function (event) {
-                        if (!event.target.matches('.dropbtn')) {
-                            var dropdowns = document.getElementsByClassName("dropdown-content");
-                            var i;
-                            for (i = 0; i < dropdowns.length; i++) {
-                                var openDropdown = dropdowns[i];
-                                if (openDropdown.classList.contains('show')) {
-                                    openDropdown.classList.remove('show');
-                                }
-                            }
-                        }
-                    }
-                </script>
+                <script src="js/course.js"></script>
             </body>
 
             </html>

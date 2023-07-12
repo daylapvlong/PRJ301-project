@@ -1,4 +1,4 @@
- /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
@@ -6,6 +6,7 @@ package Controller;
 
 import Dal.ChangeDAO;
 import Dal.HomeDAO;
+import Dal.LoginDAO;
 import Model.Account;
 import Model.Category;
 import Model.Course;
@@ -16,8 +17,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Set;
+import utils.NumberToEnum;
 
 /**
  *
@@ -52,7 +55,7 @@ public class Home extends HttpServlet {
         } else {
             index = 1; // Default value, you can change it as needed
         }
- 
+
         HomeDAO dao = new HomeDAO();
         ChangeDAO changeDao = new ChangeDAO();
         List<Account> list = changeDao.getAllAccount();
@@ -60,18 +63,18 @@ public class Home extends HttpServlet {
         List<Course> listP = dao.pagingCourse(index);
         List<Category> listC = dao.getAllCategory();
         int count = dao.getAllCount();
-        int endPage = count/8;
-        if(count % 8 != 0){
+        int endPage = count / 8;
+        if (count % 8 != 0) {
             endPage++;
         }
-        
-        request.setAttribute("listAccount", list);        
+
+        request.setAttribute("listAccount", list);
         request.setAttribute("listPaging", listP);
         request.setAttribute("tag", index);
         request.setAttribute("listCategory", listC);
         request.setAttribute("endP", endPage);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
-            
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

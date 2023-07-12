@@ -28,7 +28,15 @@
                             </div>
                             
                             <div>
-                                ${namemess}
+                                ${checkmess}
+                            </div>
+
+                            <div>
+                                ${radiomess}
+                            </div>
+                            
+                            <div>
+                                ${existedmess}
                             </div>
                             
                             <div>
@@ -50,7 +58,7 @@
                             <form method="post" action="signup" class="register-form" id="register-form">
 
                                 <div class="form-group">
-                                    <input class="form-control" type="text" name="name" id="name" placeholder="Your Name" />
+                                    <input class="form-control" type="text" name="name" id="name" placeholder="Your Name" required/>
                                     <span class="focus-input100"></span>
                                     <span class=" material-icons-name">
                                         <i class="zmdi zmdi-account"></i>
@@ -58,7 +66,7 @@
                                 </div>                              
 
                                 <div class="form-group">
-                                    <input class="form-control" type="text" name="email" id=""name="email" id="email" placeholder="Your Email" />
+                                    <input class="form-control" type="text" name="email" id=""name="email" id="email" placeholder="Your Email" required/>
                                     <span class="focus-input100"></span>
                                     <span class=" material-icons-name">
                                         <i class="zmdi zmdi-email"></i>
@@ -66,7 +74,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input class="form-control" type="password" name="password" name="pass" id="pass" placeholder="Password" />
+                                    <input class="form-control" type="password" name="password" name="pass" id="pass" placeholder="Password" required/>
                                     <span class="focus-input100"></span>
                                     <span class=" material-icons-name">
                                         <i class="zmdi zmdi-lock"></i>
@@ -75,7 +83,7 @@
 
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="re_pass" id="re_pass"
-                                        placeholder="Repeat your password" />
+                                        placeholder="Repeat your password" required/>
                                     <span class="focus-input100"></span>
                                     <span class=" material-icons-name">
                                         <i class="zmdi zmdi-lock-outline"></i>

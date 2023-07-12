@@ -40,26 +40,12 @@ public class SignUp extends HttpServlet {
             String radio = request.getParameter("radiogroup");
             String checkbox = request.getParameter("agree-term");
 
-            if (name == null) {
-                //check name box if is empty
-                request.setAttribute("namemess", "<div class=\"alert\">\n"
-                        + "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
-                        + "                                                           Please <strong>fill in</strong> the name box.\n"
-                        + "                                                       </div>");
-                request.getRequestDispatcher("SignUp.jsp").forward(request, response);
-            } else if (mail == null) {
-                //check name box if is empty
-                request.setAttribute("mailmess", "<div class=\"alert\">\n"
-                        + "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
-                        + "                                                           Please <strong>fill in</strong> the mail box.\n"
-                        + "                                                       </div>");
-                request.getRequestDispatcher("SignUp.jsp").forward(request, response);
-            } else if (checkbox == null) {
+            if (checkbox == null) {
                 //tick terms of agreement
                 request.setAttribute("checkmess", "<div class=\"alert\">\n"
-                        + "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
-                        + "                                                           Please <strong>agree</strong> with our terms\n"
-                        + "                                                       </div>");
+                        + "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "Please <strong>agree</strong> with our terms\n"
+                        + "</div>");
                 request.getRequestDispatcher("SignUp.jsp").forward(request, response);
             } else if (radio == null) {
                 //tick terms of agreement

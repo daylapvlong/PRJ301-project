@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import utils.NumberToEnum.UserRole;
 
 /**
  *
@@ -55,17 +56,27 @@ public class Login extends HttpServlet {
                 Account a = login.checkLogin(mail,pass);
                 if(a==null){
                     request.setAttribute("loginMess", "<div class=\"alert\">\n" +
-"                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n" +
-"                                                           <strong>Wrong user login!</strong> Please try again.\n" +
+"                                                       <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n" +
+"                                                       <strong>Wrong user login!</strong> Please try again.\n" +
 "                                                       </div>");
                     request.getRequestDispatcher("Login.jsp").forward(request,response);
                 } else {                    
                     // Store user information in session
                     HttpSession session = request.getSession();
-                    session.setAttribute("acc", a);
-                    session.setAttribute("name", a.getName());
-
-                    request.getRequestDispatcher("home").forward(request, response);
+                    if (a.getIsTeacher() == UserRole.ADMIN.getValue()) {                       
+                        session.removeAttribute("role");
+                        session.setAttribute("role", UserRole.ADMIN.getValue());
+                        session.setAttribute("acc", a);
+                        session.setAttribute("name", a.getName());
+                        response.sendRedirect("home");
+                    } else {
+                        session.removeAttribute("role");
+                        session.setAttribute("role", UserRole.USER.getValue());
+                        session.setAttribute("acc", a);
+                        session.setAttribute("name", a.getName());
+                        response.sendRedirect("home");
+                    }                
+                    
                 }
             } catch(ServletException | IOException e){
                 System.out.println(e);

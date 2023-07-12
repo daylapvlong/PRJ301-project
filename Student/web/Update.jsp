@@ -33,7 +33,7 @@
                                     <div class="rightleft"></div>
                                 </div>
                                 <span class="update100-form-title">
-                                    Changing Acccount Infomation
+                                    Changing Account Information
                                 </span>
                             </div>
 

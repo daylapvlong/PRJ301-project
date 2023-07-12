@@ -12,13 +12,15 @@ public class Course {
     private int courseId;
     private String courseName;
     private String description;
+    private int categoryId;
 
     public Course(){}
-    
-    public Course(int courseId, String courseName, String description) {
+
+    public Course(int courseId, String courseName, String description, int categoryId) {
         this.courseId = courseId;
         this.courseName = courseName;
         this.description = description;
+        this.categoryId = categoryId;
     }
 
     public int getCourseId() {
@@ -45,10 +47,20 @@ public class Course {
         this.description = description;
     }
 
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
     @Override
     public String toString() {
-        return "Course{" + "courseId=" + courseId + ", courseName=" + courseName + ", description=" + description + '}';
+        return "Course{" + "courseId=" + courseId + ", courseName=" + courseName + ", description=" + description + ", categoryId=" + categoryId + '}';
     }
+    
+    
     
     
 }
