@@ -44,16 +44,16 @@ public class SignUp extends HttpServlet {
             if (checkbox == null) {
                 //tick terms of agreement
                 request.setAttribute("checkmess", "<div class=\"alert\">\n"
-                        + "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
-                        + "                                                           Please <strong>agree</strong> with our terms\n"
-                        + "                                                       </div>");
+                        + "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "Please <strong>agree</strong> with our terms\n"
+                        + "</div>");
                 request.getRequestDispatcher("SignUp.jsp").forward(request, response);
             } else if (radio == null) {
                 //tick terms of agreement
                 request.setAttribute("radiomess", "<div class=\"alert\">\n"
-                        + "                                                           <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
-                        + "                                                           Please <strong>Select</strong> your position\n"
-                        + "                                                       </div>");
+                        + "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "Please <strong>Select</strong> your position\n"
+                        + "</div>");
                 request.getRequestDispatcher("SignUp.jsp").forward(request, response);
             } else if (!pass.equals(re_pass)) {
                 //check pass va repass cp trung nhau k?

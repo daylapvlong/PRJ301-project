@@ -5,6 +5,8 @@
 package Dal;
 
 import DB.DBContext;
+import Model.Account;
+import Model.Course;
 import Model.Quiz;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -141,31 +143,54 @@ public class CourseDAO extends DBContext {
         return courseId;
     }
     
-    public void createCourse(String courseName, String description, int cateId){
+    public void createCourse(String courseName, String description, String cateId){
         String query= "insert into Course(courseName, description, categoryId) values(?,?,?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, courseName);
             ps.setString(2, description);
-            ps.setInt(3, cateId);
+            ps.setString(3, cateId);
             ps.executeUpdate();
         } catch(Exception e) {
             System.out.println(e);
         }
     }
 
+    public Course checkCourseExisted(String name) {
+        try {
+            String query = "Select * from Course where courseName = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                return new Course(rs.getInt(1),
+                                rs.getString(2),
+                                rs.getString(3),
+                                rs.getInt(4));
+            }
+        } catch(Exception e) {
+            
+        }
+        return null;
+    }
+    
     public static void main(String[] args) {
         CourseDAO dao = new CourseDAO();
-
-        String cid = "1";
-        List<Quiz> list = dao.getAllQuiz(cid);
-        for (Quiz o : list) {
-            System.out.println(o);
-        }
+        String name = "MAE101";
+        Course c = dao.checkCourseExisted(name);
+        System.out.println(c);
+//        String cid = "1";
+//        List<Quiz> list = dao.getAllQuiz(cid);
+//        for (Quiz o : list) {
+//            System.out.println(o);
+//        }
 
 //        String quizId ="1";
 //        Quiz quiz = dao.getQuizById(quizId);
 //        System.out.println(quiz);
+        
     }
 }

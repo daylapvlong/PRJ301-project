@@ -4,6 +4,8 @@
  */
 package Controller;
 
+import Dal.CourseDAO;
+import Model.Course;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -71,7 +73,44 @@ public class CreateCourse extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String name = request.getParameter("courseName");
+        String description = request.getParameter("description");
+        String semester = request.getParameter("semester");
+        
+        if (name == null){
+            request.setAttribute("namemess", "<div class=\"alert\">\n"
+                        + "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "Please <strong>enter the course name</strong> \n"
+                        + "</div>");
+            request.getRequestDispatcher("CreateCourse.jsp").forward(request, response);
+        } else if (description == null){
+            request.setAttribute("desmess", "<div class=\"alert\">\n"
+                        + "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "Please <strong>enter the course description</strong> \n"
+                        + "</div>");
+            request.getRequestDispatcher("CreateCourse.jsp").forward(request, response);
+        } else if (semester == null){
+            request.setAttribute("radiomess", "<div class=\"alert\">\n"
+                        + "<span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n"
+                        + "Please <strong>enter the course semester</strong> \n"
+                        + "</div>");
+            request.getRequestDispatcher("CreateCourse.jsp").forward(request, response);
+        } else {
+            CourseDAO dao = new CourseDAO();
+            Course c = dao.checkCourseExisted(name);
+            
+            if(c == null){
+                dao.createCourse(name, description, semester);
+                response.sendRedirect("home");
+            } else {
+                request.setAttribute("checkmess", "<div class=\"alert\">\n" +
+"                                    <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> \n" +
+"                                    <strong>Course existed!</strong> Please try again.\n" +
+"                                    </div>");
+                request.getRequestDispatcher("CreateCourse.jsp").forward(request,response);
+            }
+        }
+        
     }
 
     /**

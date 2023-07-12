@@ -20,7 +20,7 @@
                     <div class="course_container">
                         <c:choose>
                             <c:when test="${sessionScope.role eq '1'}">
-                                <a href="UpdateCourse.jsp">Update</jsp" class="course_details col-sm-8">
+                                <a href="UpdateCourse.jsp" class="course_details col-sm-8">
                                     <h1>${course.courseName}</h1>
                                     <h1>/</h1>
                                     <h2>${course.description}</h2>
