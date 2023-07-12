@@ -16,8 +16,6 @@ Create table Course (
 	courseId int primary key IDENTITY(1,1),
 	courseName varchar(255),
 	description varchar(500),
-	Id int,
-	FOREIGN KEY (id) REFERENCES Account(Id),
 	categoryId int,
 	FOREIGN KEY (categoryId) REFERENCES Category(categoryId)
 )

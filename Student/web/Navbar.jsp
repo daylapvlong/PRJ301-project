@@ -20,8 +20,13 @@
                     <c:choose>
                         <c:when test="${sessionScope.role eq '1'}">
                             <a class="navbar_icon"
-                                href="${sessionScope.acc == null ? 'Login.jsp' : 'Create.jsp'}">Create a quiz</a>
+                                href="${sessionScope.acc == null ? 'Login.jsp' : 'Create.jsp'}">Create quiz</a>
+                            <a class="navbar_icon"
+                                href="${sessionScope.acc == null ? 'Login.jsp' : 'CreateCourse.jsp'}">Create course</a>
                         </c:when>
+                        <c:otherwise>
+                            <a class="navbar_icon" href="${sessionScope.acc == null ? 'Login.jsp' : '#'}">Contact Us</a>
+                        </c:otherwise>
                     </c:choose>
 
                 </div>

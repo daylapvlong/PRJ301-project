@@ -27,17 +27,16 @@
                             <div class="formQuestion">
                                 <input class="input" type="text" name="question" placeholder="Question"></textarea>
                             </div>
-                            <!-- <div class="formAnswer">
-                                <input class="input" type="text" name="option" placeholder="Option" />
-                                <input class="radio" type="radio" name="radio" name="isCorrect">
-                            </div> -->
+    
                             <div class="formAnswer" id="createAnswer">
                                 <input class="input" type="text" name="option" placeholder="Option" />
                                 <input class="radio" type="radio" name="isCorrect">
                                 <button type="button" onclick="deleteAnswer()">Del Answer</button>
                             </div>
+
                             <button type="button" id='btn-copy' class="btn-copy" onclick="duplicateAnswer()">New
                                 Answer</button>
+                                
                             <button type="button" id='btn-delete' class="btn-copy" onclick="deleteQuestion()">Delete
                                 Question</button>
                         </div>

@@ -18,11 +18,22 @@
 
                 <div class="body_container">
                     <div class="course_container">
-                        <div class="course_details col-sm-8">
-                            <h1>${course.courseName}</h1>
-                            <h1>/</h1>
-                            <h2>${course.description}</h2>
-                        </div>
+                        <c:choose>
+                            <c:when test="${sessionScope.role eq '1'}">
+                                <a href="UpdateCourse.jsp">Update</jsp" class="course_details col-sm-8">
+                                    <h1>${course.courseName}</h1>
+                                    <h1>/</h1>
+                                    <h2>${course.description}</h2>
+                                </a>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="course_details col-sm-8">
+                                    <h1>${course.courseName}</h1>
+                                    <h1>/</h1>
+                                    <h2>${course.description}</h2>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
 
                         <div class="course_filter col-sm-5">
 

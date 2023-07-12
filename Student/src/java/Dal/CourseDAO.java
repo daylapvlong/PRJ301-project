@@ -140,6 +140,20 @@ public class CourseDAO extends DBContext {
         }
         return courseId;
     }
+    
+    public void createCourse(String courseName, String description, int cateId){
+        String query= "insert into Course(courseName, description, categoryId) values(?,?,?)";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, courseName);
+            ps.setString(2, description);
+            ps.setInt(3, cateId);
+            ps.executeUpdate();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
 
     public static void main(String[] args) {
         CourseDAO dao = new CourseDAO();
