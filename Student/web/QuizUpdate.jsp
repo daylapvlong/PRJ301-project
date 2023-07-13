@@ -8,6 +8,7 @@
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
                 <title>JSP Page</title>
                 <link href="css/QuizUpdate.css" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
                 <script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
             </head>
 
@@ -48,7 +49,10 @@
                             </div>
 
                         </div>
-                        <button class="update-button">Update</button>
+                        <div class="button-container">
+                            <button class="update-button">Update</button>
+                            <a href="#" class="update-button">Delete</a>
+                        </div>
                     </form>
                 </div>
             </body>

@@ -143,7 +143,7 @@
                                             <c:when test="${sessionScope.role eq '1'}">
                                                 <td class="px-6 py-4">
                                                     <a href="QuizUpdate.jsp" class="startbtn">Update</a>
-                                                </td>
+                                                </td>                                      
                                             </c:when>
                                             <c:otherwise>
                                                 <td class="px-6 py-4">

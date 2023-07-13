@@ -40,6 +40,8 @@
                                 </span>
                             </div>
 
+                            <input type="hidden" name="courseid" value="${param.courseid}">
+
                             <p class="form-heading">Enter your course name: </p>
                             <div class="wrap-input100 validate-input">
                                 <input class="input100" type="text" name="courseName" id="name" value="${c_update.courseName}"

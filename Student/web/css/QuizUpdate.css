@@ -97,15 +97,23 @@ button {
   color: #000000;
   cursor: not-allowed;
 }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
 .update-button {
   font-size: 1em;
   margin-top: 1.5em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
   background-color: #8754ff;
   color: #ffffff;
   padding: 0.7em 1.8em;
   border-radius: 0.3em;
   float: right;
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
 }
 .hide {
   display: none;

@@ -208,6 +208,19 @@ public class ChangeDAO extends DBContext {
             System.out.println(e);
         }
     }
+    
+    public void deleteQuiz(String quizId) {
+        String query = "delete from Quiz\n"
+                        + "where quizId = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, quizId);
+            ps.executeUpdate();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+    }
 
     public static void main(String[] args) {
         ChangeDAO dao = new ChangeDAO();
