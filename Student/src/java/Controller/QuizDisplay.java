@@ -41,7 +41,7 @@ public class QuizDisplay extends HttpServlet {
         QuestionDAO qdao = new QuestionDAO();
 
         Quiz quiz = cdao.getQuizById(quizId);
-        ArrayList<Question> listQuestion = qdao.getListQuestion("1");
+        ArrayList<Question> listQuestion = qdao.getListQuestion(quizId);
 
         Object res = new Object() {
             ArrayList<Question> questions = listQuestion;

@@ -27,7 +27,7 @@ public class DeleteQuiz extends HttpServlet {
         String quizId = request.getParameter("quizid");
         ChangeDAO dao = new ChangeDAO();
         dao.deleteQuiz(quizId);
-        response.sendRedirect("home");
+        response.sendRedirect(request.getHeader("referer"));
     }
 
 
