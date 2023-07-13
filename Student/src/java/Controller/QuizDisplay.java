@@ -30,8 +30,8 @@ public class QuizDisplay extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String quizId = request.getParameter("quiztuntid");
-        int quzId = 1;
+        String quizId = request.getParameter("quizid");
+        int quzId = 0;
 
         if (quizId != null && !quizId.isEmpty()) {
             quzId = Integer.parseInt(quizId);
@@ -41,7 +41,7 @@ public class QuizDisplay extends HttpServlet {
         QuestionDAO qdao = new QuestionDAO();
 
         Quiz quiz = cdao.getQuizById(quizId);
-        ArrayList<Question> listQuestion = qdao.getListQuestion(1);
+        ArrayList<Question> listQuestion = qdao.getListQuestion("1");
 
         Object res = new Object() {
             ArrayList<Question> questions = listQuestion;

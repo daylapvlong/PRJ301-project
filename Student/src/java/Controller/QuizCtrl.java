@@ -39,20 +39,13 @@ public class QuizCtrl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String quizId = request.getParameter("quizid");
-//        int questionId;
-//        try {
-//            questionId = Integer.parseInt(request.getParameter("questionid"));
-//        } catch (NumberFormatException e) {
-//            questionId = 0; 
-//        }
-        int quzId = Integer.parseInt(request.getParameter("quizid"));
         
         CourseDAO cdao = new CourseDAO();
         QuestionDAO qdao = new QuestionDAO();
 //        AnswerDAO adao = new AnswerDAO();
         
         Quiz quiz = cdao.getQuizById(quizId);
-        ArrayList<Question> listQuestion = qdao.getListQuestion(quzId);
+        ArrayList<Question> listQuestion = qdao.getListQuestion(quizId);
 //        ArrayList<Answer> listAnswer = adao.getListAnswer(questionId);
 //        ArrayList<Answer> listCorrectAnswer = adao.getCorrectAnswer(questionId);
      

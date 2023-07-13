@@ -9,6 +9,8 @@ let restart = document.getElementById("restart");
 let userScore = document.getElementById("user-score");
 let startScreen = document.querySelector(".start-screen");
 let startButton = document.getElementById("start-button");
+let params = new URL(document.location).searchParams;
+let quizid = parseInt(params.get("quizid"));
 let questionCount;
 let scoreCount = 0;
 let count = 11;
@@ -20,7 +22,7 @@ let countdown;
 let quizArray = [];
 $(document).ready(function () {
     $.ajax({
-        url: 'http://localhost:8080/Student/quizdisplay',
+        url: 'http://localhost:8080/Student/quizdisplay?quizid=' + quizid,
         method: 'GET',
         context: document.body,
         success: function (responseText) {

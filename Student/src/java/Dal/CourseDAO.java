@@ -213,7 +213,7 @@ public class CourseDAO extends DBContext {
 //            System.out.println(o);
 //        }
 
-//        String quizId ="1";
+//        String quizId ="3";
 //        Quiz quiz = dao.getQuizById(quizId);
 //        System.out.println(quiz);
         

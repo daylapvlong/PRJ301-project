@@ -37,7 +37,7 @@ public class QuestionDAO {
         return 0;
     }
     
-    public ArrayList<Question> getListQuestion(int quizId) {
+    public ArrayList<Question> getListQuestion(String quizId) {
         ArrayList<Question> listQuestion = new ArrayList<>();
         String query = "SELECT qn.questionId, qn.Content FROM Question qn\n"
                 + "INNER JOIN QuestionQuiz qz\n"
@@ -46,7 +46,7 @@ public class QuestionDAO {
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setInt(1, quizId);
+            ps.setString(1, quizId);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt(1);
@@ -104,10 +104,10 @@ public class QuestionDAO {
     }
 
     public static void main(String[] args) {
-        QuestionDAO dao = new QuestionDAO();
-        ArrayList<Integer> questionDone = new ArrayList<>();
-        ArrayList<Question> list = dao.getListQuestion(1);
-        System.out.println(list);
+//        QuestionDAO dao = new QuestionDAO();
+//        ArrayList<Integer> questionDone = new ArrayList<>();
+//        ArrayList<Question> list = dao.getListQuestion(3);
+//        System.out.println(list);
 
 //        ArrayList<Question> list = dao.getListQuestionNotDone(1,questionDone);
 //        System.out.println(list);
